@@ -1,14 +1,15 @@
 {
-  "name": "app",
-  "productName": "App",
-  "version": "0.0.0",
-  "description": "",
+  "name": "MZD-AIO-TI",
+  "productName": "MZD-AIO-TI",
+  "version": "2.0.0",
+  "description": "Mazda - All In One - Tweaks Installer",
   "license": "MIT",
-  "repository": "user/repo",
+  "repository": "trevelopment/MZD-AIO-TI",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "Trevor G Mrtin",
+    "company": "Trevelopment",
+    "email": "Trez@mazdatweaks.com",
+    "url": "https://trevelopment.com"
   },
   "scripts": {
     "test": "xo",
@@ -25,7 +26,11 @@
     "electron"
   ],
   "dependencies": {
-    "electron-debug": "^1.0.0"
+    "bootstrap": "^3.3.7",
+    "electron-config": "^0.2.1",
+    "electron-debug": "^1.0.0",
+    "jquery": "^3.1.0",
+    "opn": "^4.0.2"
   },
   "devDependencies": {
     "devtron": "^1.1.0",
