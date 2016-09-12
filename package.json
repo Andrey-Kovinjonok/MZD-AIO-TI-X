@@ -29,6 +29,7 @@
     "bootstrap": "^3.3.7",
     "electron-config": "^0.2.1",
     "electron-debug": "^1.0.0",
+    "forms": "^1.2.0",
     "jquery": "^3.1.0",
     "opn": "^4.0.2"
   },

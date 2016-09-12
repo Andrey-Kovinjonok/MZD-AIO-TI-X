@@ -6,6 +6,7 @@ body {
 
 body {
 	font-family: -apple-system, 'Helvetica Neue', Helvetica, sans-serif;
+	margin-bottom: 30px;
 }
 .main {
 	padding: 10px;
@@ -28,7 +29,6 @@ header h1 {
 	padding: 0;
 }
 footer {
-	position: absolute;
 	bottom: 0;
 	text-align: center;
 	width: 100%;
@@ -39,10 +39,44 @@ footer {
 .copyright {
 
 }
+.w3-bordered tr {
+    border-right: 1px solid #ddd;
+}
 section.options {
 	margin: 10px 50px;
 }
 
 .form-group, .form-actions {
 	margin: 10px;
+}
+.form-actions {
+	margin-bottom: 100px;
+}
+/*input[type=checkbox].w3-check {
+    margin: 5px;
+}*/
+label {
+    font-size: 12px;
+		cursor:pointer;
+}
+input[type=checkbox] {
+	cursor: pointer;
+}
+.w3-table td, .w3-table td:first-child {
+    padding:0px 1px 5px 5px;
+}
+.w3-text {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+		border: 5px outset #c3c3c3;
+    padding: 10px 20px!important;
+    text-align: justify!important;
+}
+@media (max-width:600px) {
+	.w3-text {
+		padding:10px!important;
+	}
 }

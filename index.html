@@ -4,10 +4,15 @@
 	<meta charset="utf-8">
 	<title>MZD-AIO-TI</title>
 	<link rel="stylesheet" href="index.css">
-	<link rel="stylesheet" href="./site/css/w3.css">
-	<script src="./site/js/w3data.js"></script>
-	<script src="./site/js/jquery-2.2.4.min.js"></script>
-	<!--script src="./site/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="./docs/css/w3.css">
+	<!-- Insert this line above script imports  -->
+	<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+	<!-- normal script imports etc  -->
+	<script src="./docs/js/jquery-2.2.4.min.js"></script>
+	<script src="./docs/js/w3data.js"></script>
+	<!-- Insert this line after script imports -->
+	<script>if (window.module) module = window.module;</script>
+	<!--script src="./docs/js/materialize.min.js"></script>
 	<link rel="import" href="site/index.html">
 	<link rel="import" href="site/faq/index.html">
 	<link rel="import" href="site/changelog/index.html"-->
@@ -17,7 +22,7 @@
 	win.loadURL('https://github.com')
 });
 </script>
-<script type="text/javascript" src="./site/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="./docs/js/jquery-2.2.4.min.js"></script>
 <script>
 (function ($) {
 $(document).ready(function(){
@@ -35,91 +40,116 @@ shell.openExternal('https://github.com');
 		<a href="javascript:void(0)"
 		onclick="w3_close()"
 		class="w3-closenav w3-xxlarge">&times;</a>
-		<a class=" w3-hover-green  w3-blue " href="./site/index.html">Home</a>
-		<a class="page-link w3-hover-green " href="./site/faq.html">FAQ</a>
-		<a class="page-link w3-hover-green " href="./site/changelog.html">Changelog</a>
+		<a class=" w3-hover-green  w3-blue " href="./docs/index.html">Home</a>
+		<a class="page-link w3-hover-green " href="./docs/faq.html">FAQ</a>
+		<a class="page-link w3-hover-green " href="./docs/changelog.html">Changelog</a>
 		<a class=" w3-hover-green" href="http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/122458-aio-all-one-tweaks.html">Thread</a>
 		<a class=" w3-hover-green" href="https://github.com/Siutsch/AIO---All-in-one-tweaks">GitHub</a>
 		<a class=" w3-hover-green" href="http://goo.gl/4D7kTM" class="btn">Download</a>
-		<!--a class=" w3-hover-green" href="./site/faq/"></a-->
+		<!--a class=" w3-hover-green" href="./docs/faq/"></a-->
 	</nav>
 	<div class="container">
 		<header>
 			<span class="w3-opennav w3-xxlarge w3-display-topleft w3-padding" onclick="w3_open()" id="openNav">&#9776;</span>
 			<h1>MZD-AIO-TI</h1>
 		</header>
-		<section id="main" class="main"><a href="./site/index.html">Docs</a>
-		</section>
-		<section id="options" class="options container">
-			<form>
-				<div class="form-group radios">
-					<input type="radio" class="w3-radio" name="installChoice" checked>
+		<section id="main" class="main"><a href="./docs/index.html">Docs</a>
+
+			<section id="options2" class="options container">
+				<div class="form-group radios w3-third">
+					<input type="radio" class="w3-radio" name="installChoice" onclick="installOptions()" checked>
 					<label class="w3-validate">
 						Install
 					</label>
-					<input type="radio" class="w3-radio" name="installChoice">
+					<input type="radio" class="w3-radio" name="installChoice" onclick="uninstallOptions()">
 					<label class="w3-validate">
 						Deinstall
 					</label>
 				</div>
-				<select class="w3-select w3-half w3-right" class="form-control">
-					<option value="" disabled selected>Choose Language</option>
-					<option value="1">English</option>
-					<option value="2">German</option>
-					<option value="3">French</option>
-					<option value="4">...</option>
-					<option value="5">...</option>
-					<option value="6">...</option>
-					<option value="7">...</option>
-				</select>
-
-				<div class="checkboxes w3-half">
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 1</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 2</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 3</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 4</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 5</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 6</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 7</label>
-					<br>
-					<input type="checkbox" class="w3-check">
-					<label class="w3-validate">Tweak 8</label>
+				<div class="w3-right w3-third">
+					<select class="w3-select" class="form-control">
+						<option value="" disabled selected>Choose Language</option>
+						<option value="1">English</option>
+						<option value="2">German</option>
+						<option value="3">French</option>
+						<option value="4">...</option>
+						<option value="5">...</option>
+						<option value="6">...</option>
+						<option value="7">...</option>
+					</select>
 				</div>
-
-				<div class="form-actions w3-half">
-					<button type="submit" class="btn btn-form btn-primary">OK</button>
-					<button type="submit" class="btn btn-form btn-default">Cancel</button>
-				</div>
-				<div class="form-group w3-right w3-half">
-					<input type="email" class="form-control w3-input" placeholder="Your Email">
-					<label>Email address</label>
-				</div>
-				<!--div class="form-group">
-				<label>Password</label>
-				<input type="password" class="form-control w3-input" placeholder="Password">
+				<!--div class="form-group w3-third">
+				<input type="email" class="form-control w3-input" placeholder="Your Email">
+				<label>Email address</label>
+			</div-->
+		</section>
+		<form>
+			<div class="w3-row">
+				<table id="options" class="w3-table w3-bordered w3-card-4">
+					<tr id="Op{{OpId}}" class="w3-hover-pale-blue w3-tooltip w3-half" w3-repeat="options">
+						<td>
+							<input class="w3-check" type="checkbox" {{checked}}>
+							<label class="w3-validate inst">{{INST}}</label>
+							<label class="w3-validate deinst" style="display:none">{{DEINST}}</label>
+						</td>
+						<td class="w3-text w3-tag  w3-animate-zoom" style="">
+							<span>{{toolTip}}</span>
+							<span onclick="$(this).parent().hide();$(this).parent().removeClass('w3-show');" class="w3-display-topright w3-text-white w3-xlarge" style="cursor:pointer">&times;</span>
+						</td>
+					</tr>
+				</table>
 			</div>
-			<div class="form-group">
-			<label>Description</label>
-			<textarea class="form-control w3-input" rows="3"></textarea>
-		</div-->
-	</form>
+			<!--div class="form-group">
+			<label>Password</label>
+			<input type="password" class="form-control w3-input" placeholder="Password">
+		</div>
+		<div class="form-group">
+		<label>Description</label>
+		<textarea class="form-control w3-input" rows="3"></textarea>
+	</div-->
+	<div class="form-actions w3-row w3-center l12">
+		<button type="submit" class="btn btn-form btn-primary">OK</button>
+		<button type="submit" class="btn btn-form btn-default">Cancel</button>
+	</div>
+</div>
+
+</form>
 </section>
+</div>
 <footer>
 	<span class="copyright">&copy; 2016 Trevelopment.</span>
+	<p id="demo"></p>
 </footer>
-</div>
 </body>
+<script type="text/javascript" src="./languages/english.js"></script>
+<script>
+w3DisplayData("options",allOptions);
+
+const Config = require('electron-config'); //persistant data
+const config = new Config();
+//document.getElementById("touchscreen").checked = config.get('options.touchscreen.checked'));
+document.getElementById("Op01").classList.add(config.get('options.touchscreen.checked'));
+$(document).ready(function(){$('.w3-check').checked;});
+function handleClick(cb) {
+	document.getElementById("demo").innerHTML= config.get('options.touchscreen.checked') + " Touchscreen = " + cb.checked;
+
+}
+const alertOnlineStatus = () => {
+	console.log(navigator.onLine ? 'online' : 'offline')
+}
+
+window.addEventListener('online',  alertOnlineStatus);
+window.addEventListener('offline',  alertOnlineStatus);
+
+alertOnlineStatus();
+$('label').on('click', function(){$('.w3-text').removeClass('w3-show');$(this).parent().next().addClass('w3-show');});
+function installOptions() {
+	$('.inst').show();
+	$('.deinst').hide();
+}
+function uninstallOptions() {
+	$('.inst').hide();
+	$('.deinst').show();
+}
+</script>
 </html>

@@ -158,3 +158,18 @@ function w3_close() {
   document.getElementById("mySidenav").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }
+function toggleMessage(idToShow) {
+    var x = document.getElementById(idToShow);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+function check(idToCheck) {
+    document.getElementById(idToCheck).checked = true;
+}
+
+function uncheck(idToCheck) {
+    document.getElementById(idToCheck).checked = false;
+}

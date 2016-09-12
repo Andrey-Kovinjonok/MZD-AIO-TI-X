@@ -6,7 +6,7 @@ const opn = require('opn'); //A better node-open
 const Config = require('electron-config'); //persistant data
 require('./menus/application-menu.js'); //Menu
 require('electron-debug')();// adds debug features like hotkeys for triggering dev tools and reload
-
+const config = new Config();
 // prevent window being garbage collected
 let mainWindow;
 
@@ -22,13 +22,12 @@ function createMainWindow() {
 		height: 800,
 		'minWidth': 600,
 		'minHeight': 400,
-		'icon': './site/favicon.ico',
+		'icon': './docs/favicon.ico',
 		//'autoHideMenuBar':true
 	});
 
 	win.loadURL(`file://${__dirname}/index.html`);
 	win.on('closed', onClosed);
-
 	return win;
 }
 
@@ -50,14 +49,20 @@ app.on('ready', () => {
 });
 
 function resetDefaults() {
-	const config = new Config();
-
 	config.set('unicorn', 'Uni');
-	console.log(config.get('unicorn'));
-	//=> 'Uni'
+	config.set('options.touchscreen.checked', 'true');
+	config.set('options.disclaimder.checked', "");
+	config.set('options.disclaimder.time', "0");
+	config.set('options.revSaftey.checked', "");
+	config.set('options.blankArt.checked', "");
+	config.set('options.background.checked', "");
+	config.set('options.speedo.checked', "");
 
+	//=> 'Uni'
+	    hello: 'world'
 	// use dot-notation to access nested properties
 	config.set('foo.bar', true);
-	console.log(config.get('foo'));
+	console.log(app.getPath('userData'));
+	console.log(config.get('options'));
 	//=> {bar: true}
 }
