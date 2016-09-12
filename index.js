@@ -4,9 +4,9 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const opn = require('opn'); //A better node-open
 const Config = require('electron-config'); //persistant data
+const config = new Config();
 require('./menus/application-menu.js'); //Menu
 require('electron-debug')();// adds debug features like hotkeys for triggering dev tools and reload
-const config = new Config();
 // prevent window being garbage collected
 let mainWindow;
 
@@ -59,7 +59,9 @@ function resetDefaults() {
 	config.set('options.speedo.checked', "");
 
 	//=> 'Uni'
+/*	config.store = {
 	    hello: 'world'
+	};*/
 	// use dot-notation to access nested properties
 	config.set('foo.bar', true);
 	console.log(app.getPath('userData'));

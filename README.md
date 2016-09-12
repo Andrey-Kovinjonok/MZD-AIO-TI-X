@@ -1,43 +1,34 @@
 
-# [Go to FAQ](AIO-FAQ.md "FAQ")
-
-# [Go to CHANGELOGS](CHANGELOG.md "CHANGELOGS")
-
-
-# AIO - All-In-One tweaks V{{ site.version }}  -  2016-07-22
+# MZD-AIO-TI
+## Mazda All In One tweaks Installer
+### AIO Rebuilt with [Electron](http://electron.atom.io)
+#### [MazdaTweaks.com](http://mazdatweaks.com)
+# AIO - All-In-One tweaks V1.51  -  2016-08-11
 
 
 ### Installer and uninstaller for almost 40 different tweaks (>100 with variations) for Mazda MZD System - thanks to all developers out there!
 
 #### (Mazda 2 (DJ), Mazda 3 (BM), Mazda 6 (GJ), Mazda CX-3 (DK), Mazda CX-5 (KE), Mazda MX-5 Roadster (ND) and new 2017 Mazda CX-9 (TC))
 
-<div class="english">
-
 -----
 
-### **IMPORTANT: All changes happen at your own risk!** 
+### **IMPORTANT: All changes happen at your own risk!**
 
-##### **Please understand that you can damage or brick your infotainment system running these tweaks!** 
-
+##### **Please understand that you can damage or brick your infotainment system running these tweaks!**
 ##### **Anyone who is unsure should leave it alone, ask someone with experience to help or ask in the forum.**
-
 ##### **I am not responsible for damages that may incur from the use.**
 
 -----
 
+:hand:
+## **A T T E N T I O N - Important information:**
 
-#### **A T T E N T I O N - Important information:**
-
-##### **DOING A FACTORY RESET AFTER INSTALLING ANDROID AUTO LEADS THE SYSTEM TO STAY AT MAZDA BOOT LOGO!!!**
-
-##### **SO AVOID A FACTORY RESET OR UNINSTALL AA BEFORE THAT!** 
-
-##### **There is unfortunately no chance to get access again on the CMU after doing a factory reset,**
-
-##### **the wireless settings will be deleted too when doing a factory reset**
+#### **DOING A FACTORY RESET AFTER INSTALLING ANDROID AUTO LEADS THE SYSTEM TO STAY AT MAZDA BOOT LOGO!!!**
+#### **SO AVOID A FACTORY RESET OR UNINSTALL AA BEFORE THAT!**  :scream:
+#### **There is unfortunately no chance to get access again on the CMU after doing a factory reset,**
+#### **the wireless settings will be deleted too when doing a factory reset**
 
 ***
-
 #### **Only use with >= v55.  DO NOT USE with V30/31/33 OR THE SYSTEM TO STAY AT MAZDA BOOT LOGO!!!!!**
 
 -----
@@ -47,7 +38,7 @@ After copying all files from different tweaks together, I thought, it would cert
 Since I unfortunately do not have so much experience with modern Windows scripting languages, I did it as a CMD file, sure it's not so elegant, but it works.
 
     First start 'choose.cmd' to* generate your individual tweaks.sh file (only possible with Windows - sorry!)
-	
+
 Then copy all files from folder '_copy_content_to_root_of_fat32_usb_stick' to the root of a blank FAT32 USB flash drive or let AIO do this for you, unplug any other USB drives from the car except this flash drive.  
 For installation of speedcam patch (see below), the NAVI SD card must remain in the car, because speedcam.txt file will be copied directly to SD card.  
 For installation of speedometer, the NAVI SD card must remain in the car too, without NAVI SD card a special patch will be installed, otherwise the compass is rotated 180.  
@@ -58,32 +49,26 @@ See some examples inside folder 'choose\more_background-images'.
 
 Plugin USB drive, turn on car and wait for the "All-in-one tweaks applied" window to appear (should take some time, so be patient!).  
 After that, the system will be restarted automatically (if you press OK) do apply the tweaks.
-</div>
-<div class="german" style="display:none;">
+
 
 -------------------------------------------------------------------------------------------------------------
 
-:hand:
 
 ### **WICHTIG: Alle Veränderungen geschehen auf eigenes Risiko!**
 
 ##### **Dein Infotainment System könnte dabei beschädigt werden!**
-
 ##### **Wer sich unsicher ist, sollte die Finger davon lassen, jemand mit Erfahrung zu Hilfe bitten oder im Forum erst mal nachfragen.**
-
 ##### **Ich bin nicht verantwortlich für Schäden, die durch die Nutzung enstehen könnten.**
 
 -----
 
-#### **A C H T U N G: Wichtige Information:**
+:hand:
+## **A C H T U N G: Wichtige Information:**
 
-
-##### **VOR EINEM WERKSRESET BITTE UNBEDINGT ANDROID AUTO WIEDER DEINSTALLIEREN, ANDERNFALLS BLEIBT DAS SYSTEM BEIM MAZDA BOOT LOGO HAENGEN!**
-
-##### **Es gibt dann keine Möglichkeit mehr, auf das System zuzugreifen, die WLAN Einstellungen werden bei einem Werksreset ebenfalls gelöscht.**
+#### **VOR EINEM WERKSRESET BITTE UNBEDINGT ANDROID AUTO WIEDER DEINSTALLIEREN, ANDERNFALLS BLEIBT DAS SYSTEM BEIM MAZDA BOOT LOGO HAENGEN!**  :scream:
+#### **Es gibt dann keine Möglichkeit mehr, auf das System zuzugreifen, die WLAN Einstellungen werden bei einem Werksreset ebenfalls gelöscht.**
 
 ***
-
 #### **Nur nutzen mit >= v55.  Nicht nutzen mit V30/31/33 ODER DAS SYSTEM BLEIBT BEIM MAZDA BOOT LOGO HÄNGEN!!!!!**
 
 -----
@@ -105,34 +90,32 @@ Einige Beispiele sind im Ordner 'choose\more_background-images' zu finden.
 Den USB-Stick im Auto in einen freien Slot stecken und auf das Fenster "All-in-one tweaks applied" warten, (kann etwas dauern, also bitte Geduld!).  
 Danach wird das System automatisch neu gestartet (wenn OK gedrückt wird), damit die Änderungen wirksam werden.
 
-</div>
+
 -------------------------------------------------------------------------------------------------------------
 
 
 #### WHICH FW VERSIONS ARE SUPPORTED:
 
 ##### The tweaks can be installed for all FW versions I now at this time, for most of the tweaks it doens't matter, which FW you have, which are these:
-- 56.00.100A/230A/240B/511A/512A/513C -ADR (4A N)
+- 56.00.100A/230A/240B/511A/512A/513C / 59.00.326A -ADR (4A N)
 - 56.00.230A/511A/512A/513B -EU
 - 55.00.650A/753A/760A / 58.00.250A -NA
 - 56.00.401A-JP
 
-_**This will be generally checked at the begining of an installation and you get a popup window with info if your FW is compatible or not and can decide to go on or abort at this point.**_
+_**This will be generally checked at the beginning of an installation and you get a popup window with info if your FW is compatible or not and can decide to go on or abort at this point.**_
+
 
 ##### For the following listed tweaks this will be checked again individually during installation of these tweaks, because there are different (config)-files that I have to consider:
 - speedcam-patch
 - pause_on_mute
 - track-order/FLAC support
-
-
-##### In latest NA FW 58.00.250A-NA the files for these tweaks have changed too:
 - no_more_disclaimer
 - list_loop
 - order_of_audio_source_list
 
 
 ##### Speedcam-patch support only for:
-- 56.00.100A/230A/240B/513C -ADR (4A N)
+- 56.00.100A/230A/240B/513C / 59.00.326A -ADR (4A N)
 - 56.00.230A/511A/512A/513B -EU
 - 55.00.650A/753A/760A / 58.00.250A -NA
 - 56.00.401A -JP
@@ -149,38 +132,29 @@ _**This will be generally checked at the begining of an installation and you get
 - 55.00.650A/753A/760A / 58.00.250A -NA
 
 
-_Pause_on_mute support for all known FW versions (see above)._
-
-
 -------------------------------------------------------------------------------------------------------------
 
 
 #### WHAT EXTRA TOOLS ARE INSIDE:
 
 Although AIO has not been programmed with a modern scripting language, I use some useful tools to enhance it in some ways:
-
 - 7za.exe - Commandline version of 7-Zip - http://7-zip.org/a/7za920.zip
   * To unpack the color schemes and updates
-
-- cmdow.exe by Rithcie Lawrence - https://ritchielawrence.github.io/cmdow/  
+- cmdow.exe by Rithcie Lawrence - https://ritchielawrence.github.io/cmdow/
   * Allows windows to be listed, moved, resized, renamed, hidden/unhidden, disabled/enabled, minimized, maximized, restored, activated/inactivated, closed, killed and more.
-
-- cocolor.exe by Horst Schaeffer - http://www.horstmuc.de/wbat32.htm#cocolor  
+- cocolor.exe by Horst Schaeffer - http://www.horstmuc.de/wbat32.htm#cocolor
   * Colors in batch files
-
 - pvw32.exe by Jan Patera - http://www.pictview.com/pvw32.zip
   * A DOS-based multiformat image viewer and converter
-
-- wbox.exe by Horst Schaeffer - http://www.horstmuc.de/w32dial.htm#wbox  
+- wbox.exe by Horst Schaeffer - http://www.horstmuc.de/w32dial.htm#wbox
   * Halts a batch process and displays a window with a message text and a number of buttons in order to proceed according to the selected button
-
-- wselect.exe by Horst Schaeffer - http://www.horstmuc.de/w32dial.htm#wselect  
+- wselect.exe by Horst Schaeffer - http://www.horstmuc.de/w32dial.htm#wselect
   * offers a window with a list of items for selection in a batch (BAT/CMD) process
-
-- aria2 - https://aria2.github.io  
+- wbusy.exe by Horst Schaeffer - http://www.horstmuc.de/w32dial.htm#wbusy
+  * this little program displays a busy indicator window while a time-consuming batch process is running
+- aria2 - https://aria2.github.io
   * To download update files from my google drive account
-
-- JCI_NNG_Tool_CMD by Modfreakz  
+- JCI_NNG_Tool_CMD by Modfreakz
   * CID / SIGN Patching of file 'jci-linux_imx6_volans-release' for speedcam-patch
 
 
@@ -191,7 +165,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Tweaks Master Bundle (v55)**
-
 #### by miket0429
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-258.html#post1442746
 - **Reduce disclaimer time** (actually no longer necessary, because it can be completely disabled by "No_More_Disclaimer" tweak)
@@ -207,7 +180,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Speedometer_v4.4**
-
 #### by_Diginix
 - Based on mod by Trookam (which is based on mod by anderml1955 I think), first version of speedometer by serezhka, mph changes first done by windwalker
 - http://www.mazda6-forum.info/index.php?page=Thread&postID=329244#post329244
@@ -221,14 +193,15 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Video player v2**
-
 #### by Waisky2 with mods by vic_bam85
+Use H264 video codec and MPEG-4 AAC audio codec  
+You have to place your videos in a folder "Movies"!
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-477.html#post1596306
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-480.html#post1597962
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-295.html#post1466322
 - It uses page up/down button to navigate video list (previous version scroll bar too heavy and slow)
 - It uses websocket to handle all functions request so the response is instant (no more using nc command)
-- Functions remain Load Video List / Start Stop Playback / Next Track / Repeat 1 (looping the same video) 
+- Functions remain Load Video List / Start Stop Playback / Next Track / Repeat 1 (looping the same video)
 - Integrated as native app in menu (thanks to Diginix)
 
 ##### Changes by vic_bam85:
@@ -254,9 +227,7 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Date_to_statusbar_mod_by**
-
 #### by Diginix
-
 #### v1.0, v2.1 and v2.2 by Diginix, base by ForeverYoung (icons and date smaller just above the clock)
 - https://dl.orangedox.com/Vlyi3jrJIPfOdFiRFc
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-370.html#post1533778
@@ -272,7 +243,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Custom infotainment colors**
-
 #### (blue, green, orange, pink, purple, silver, yellow) by mrnerdbanger
 - **Info: a color matching background image will be replaced too and the speedometer graphics also, if you install speedometer.**
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors.html
@@ -281,7 +251,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Pause on mute**
-
 #### by jimmyfergus, USB script by ForeverYoung
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-331.html#post1484922
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-349.html#post1517210
@@ -291,11 +260,8 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Semi-transparent_parking_sensors_mod**
-
 #### by Diginix
-
 #### (folders "HorizontalSensors" and "VerticalSensors" used)
-
 #### Original patch by vic_bam85 not working on V 56.00.230A german version, because only folder "HorizontalSensors" used
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-346.html#post1515386
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-376.html#post1540882
@@ -305,9 +271,7 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Improved list loop**
-
 #### by yuikjh
-
 #### With additional shorter delay mod by yuikjh (generates frequent beeps!)
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-342.html#post1507786
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-332.html#post1486914
@@ -316,7 +280,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Main menu loop**
-
 #### by ForeverYoung
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-344.html#post1510946
 
@@ -324,7 +287,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **No_more_disclaimer**
-
 #### by bob12x
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/117850-way-remove-disclaimer-boot.html
 
@@ -332,7 +294,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Media order patch** and **FLAC Support**
-
 #### by diorcety
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/117162-media-flac-support-track-ordering.html
 - http://dl.free.fr/getfile.pl?file=/rfIWhre7
@@ -344,7 +305,6 @@ Although AIO has not been programmed with a modern scripting language, I use som
 
 
 ## **Change order of the audio source list**
-
 #### to this new order (often used inputs shifted upward)
 -  'FMRadio'
 -  'DAB'
@@ -360,22 +320,18 @@ Although AIO has not been programmed with a modern scripting language, I use som
 -  'AMRadio'
 -  'DVD' (not visible in Germany, only Japan?)
 -  'TV'  (not visible in Germany, only Japan?)
-
 http://www.mazda3hacks.com/doku.php?id=hacks:sourcelistorder
 
 *****************************************************************************************************************************************************
 
 
 ## **Speedcam patch**
-
 #### by diorcety
-
 #### Speedcam.txt for Germany or Europe, with or without mobile cameras (4 different databases!)
 - https://github.com/diorcety/mazda3/wiki/NNG-Speedcam-patching
 - http://poiplaza.com/index.php?p=download&d=788&lstpg2=sdb&lstpg=ds&lsts=616
 
 #### NGG-Patcher for Windows
-
 #### by bob12x:
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/112465-sd-card-cloning-tutorial-13.html#post1581778
 - https://mega.nz/#!DURwjLbL!UMO6XuasECekgJKpp7CUejsm9jqd9_2yn74ny_fbHR8
@@ -384,7 +340,6 @@ http://www.mazda3hacks.com/doku.php?id=hacks:sourcelistorder
 
 
 ## **Castscreen receiver**
-
 #### Version 2016- 03- 08 (mirroring of Android Smartphone) by daguschi, USB script by trookam
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-418.html#post1564545
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-422.html#post1566625
@@ -403,8 +358,7 @@ http://www.mazda3hacks.com/doku.php?id=hacks:sourcelistorder
 
 
 ## **Android Auto Headunit App**
-
-#### V0.92B (2016- 06- 13) by spadival / agartner (use with google Android App)
+#### V0.93A (2016-07-29) by spadival / agartner (use with google Android App)
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/121561-android-auto-headunit-app-beta.html
 - https://github.com/spadival/headunit/releases
 - https://github.com/gartnera/headunit/releases/tag/v0.91B
@@ -416,6 +370,9 @@ http://www.mazda3hacks.com/doku.php?id=hacks:sourcelistorder
 5. Android Auto will then start. If it does not, pull out the USB and start over again (or check the installation.)
 
 _**NOTE: If you are using USB Audio for sound, You can only connect your phone after car has started and the CMU has booted up. If anything is connected, the source ids change and the headunit app is not yet designed to handle that**_
+
+#### Version 0.93A Change log
+-    Working again with newer google play services
 
 #### Version 0.92A/B Change log
 -    When using fav key to switch to radio, track keys allow you to change between presets
@@ -452,14 +409,14 @@ _**NOTE: If you are using USB Audio for sound, You can only connect your phone a
 1. USB Audio is enabled - to actually use this, you need a separate USB thumb drive in one of the slots, as this is the only way for you to be able to select USB audio in the CMU. Please do not try to use MTP option on your android phone, as it is not going to work.. Also, you need at least one mp3 or any music file in the USB thumb drive (I used http://www.xamuel.com/blank- mp3- files/point1sec.mp3)
 2. Since there was a severe case of audio stuttering once for me, I have included an option to disable USB audio and switch back to AUX. You can do this by placing a file called hu_disable_audio_out in the SD CARD (which, of course, means you now need an SD card ). I haven't actually tested this out as USB Audio worked fine at all times except that one instance.
 3. Nexus fix provided by @agartner
-4. Debug version of the app - to be run from ssh only - download from here . Copy to /data_persist/dev/bin, chmod 755 and run after executing the following command: 
+4. Debug version of the app - to be run from ssh only - download from here . Copy to /data_persist/dev/bin, chmod 755 and run after executing the following command:
 ```sh
 export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera/3rdpartylibs/freetype:/usr/lib/imx-mm/audio-codec:/usr/lib/imx-mm/parser:/data_persist/dev/lib:
 ```
 
 #### Version 0.6 Change log
 1. Voice control should not cause app to quit
-2. More VIDs added, including a possible fix for Nexus phones with VID 0x18D1 
+2. More VIDs added, including a possible fix for Nexus phones with VID 0x18D1
 
 #### Version 0.5 Change log
 1. Voice control enabled
@@ -490,7 +447,6 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **SSH_bringback**
-
 #### for 56.00.511A/512A/513B- EU by mzd3-k
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-436.html#post1571842
 
@@ -498,7 +454,6 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **Open JCI test console**
-
 #### Diagnostic menu by 1 sec. clock pressing in display settings, no more pressing music + favourites + power/mute
 - http://minkara.carview.co.jp/userid/448162/car/1572030/3274514/3/note.aspx#title
 - http://minkara.carview.co.jp/en/userid/448162/profile/
@@ -507,7 +462,6 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **Swapfile**
-
 #### by Waisky2
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/57714-infotainment-project-480.html#post1597962
 
@@ -515,15 +469,13 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **Disable/Enable the boot animation**
-
 #### to red button menu by Siutsch
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/125545-easy-way-get-cid-any-sd-card-cmu-usb-tweak.html#post1618697
 
 *****************************************************************************************************************************************************
 
 
-## **Get CID of any SD card**
-
+## **Get CID** of any SD card
 #### by Modfreakz
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/125545-easy-way-get-cid-any-sd-card-cmu-usb-tweak.html#post1618697
 
@@ -531,23 +483,20 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **New scheme 'carOS'**
-
 #### by epadillac
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627265
 
 *****************************************************************************************************************************************************
 
 
-## **Bigger album art tweak**
-
+## **Bigger album art** tweak
 #### by epadillac
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627033
 
 *****************************************************************************************************************************************************
 
 
-## **No buttons background graphics tweak**
-
+## **No buttons background graphics** tweak
 #### by epadillac
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/92330-custom-infotainment-colors-14.html#post1627033
 
@@ -555,7 +504,6 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **Fuel Consumption Tweak**
-
 #### by edyvsr from mazdateammexico.com - add fuel efficiency unit KM/L
 - http://mazda3revolution.com/forums/2014-2016-mazda-3-skyactiv-audio-electronics/122458-aio-all-one-tweaks-49.html#post1658314
 - http://mazdateammexico.com/index.php?topic=16015.msg267577#msg267577
@@ -564,6 +512,5 @@ export LD_LIBRARY_PATH=/data_persist/dev/androidauto/custlib:/jci/lib:/jci/opera
 
 
 ## **Background Rotator**
-
 #### by TREZDOG44
 - Try this: http://old.photojoiner.net/
