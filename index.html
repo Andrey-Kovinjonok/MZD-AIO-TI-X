@@ -55,7 +55,7 @@ shell.openExternal('https://github.com');
 		</header>
 		<section id="main" class="main"><a href="./docs/index.html">Docs</a>
 
-			<section id="options2" class="options container">
+			<section id="options2" class="options container w3-row">
 				<div class="form-group radios w3-third">
 					<input type="radio" class="w3-radio" name="installChoice" onclick="installOptions()" checked>
 					<label class="w3-validate">
@@ -64,6 +64,13 @@ shell.openExternal('https://github.com');
 					<input type="radio" class="w3-radio" name="installChoice" onclick="uninstallOptions()">
 					<label class="w3-validate">
 						Deinstall
+					</label>
+				</div>
+				<div class="form-group helpMessages w3-tooltip w3-third">
+					<input type="checkbox" class="w3-check" id="helpToggle" onclick="helpToggle()" >
+					<label class="w3-validate">
+						Help Messages
+						<span class="w3-text w3-tag w3-tiny" style="position:absolute;border:none;width:190px;margin-bottom:-50px;">Click tweak name for help.</span>
 					</label>
 				</div>
 				<div class="w3-right w3-third">
@@ -129,7 +136,7 @@ const Config = require('electron-config'); //persistant data
 const config = new Config();
 //document.getElementById("touchscreen").checked = config.get('options.touchscreen.checked'));
 document.getElementById("Op01").classList.add(config.get('options.touchscreen.checked'));
-$(document).ready(function(){$('.w3-check').checked;});
+$(document).ready(function(){helpToggle();});
 function handleClick(cb) {
 	document.getElementById("demo").innerHTML= config.get('options.touchscreen.checked') + " Touchscreen = " + cb.checked;
 
@@ -150,6 +157,9 @@ function installOptions() {
 function uninstallOptions() {
 	$('.inst').hide();
 	$('.deinst').show();
+}
+function helpToggle() {
+	$('.w3-tag').toggleClass('w3-hide');
 }
 </script>
 </html>
