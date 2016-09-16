@@ -1,4 +1,15 @@
-var allOptions = {"options":[
+var allOptions = {/*"menu":[
+  {"menuItem":"backup","menuLabel","Do backup of JCI folder before installing tweaks?"},
+  {"menuItem":"end","menuLabel","Ready? Start The compilation!"},
+  {"menuItem":"help","menuLabel","help"},
+  {"menuItem":"instordeinst1","menuLabel","Installation"},
+  {"menuItem":"instordeinst2","menuLabel","Uninstallation"},
+  {"menuItem":"language1","menuLabel","Language:"},
+  {"menuItem":"language2","menuLabel","for switching"},
+  {"menuItem":"start1","menuLabel","Press"},
+  {"menuItem":"start2","menuLabel","to activate/deactivate"},
+  {"menuItem":"start3","menuLabel","to select all"},
+], */"options":[
   {"OpName":"Touchscreen",
   "OpId":"01","INST":"Enable the touchscreen while moving?",
   "DEINST":"Disable the touchscreen again while moving?",
@@ -112,7 +123,84 @@ var allOptions = {"options":[
   "OpId":"25","INST":"Install Background Rotator?",
   "DEINST":"Remove Background Rotator?",
   "toolTip":"Background Rotator Tweak##Cycles through 10 Backgrounds over 10 minutes (600 seconds - 60 seconds per)##To change backgrounds create a png with 8000px X 480px and save as choose\config_all\BackgroundRotator\jci\gui\common\images\background.png##(WARNING: this tweak will overwrite common.css, save a backup if already modified.)","checked":""}
-]};
+], };
+/*
+Others
+end_deletetemp="Delete temp folders ..."
+INST_wrong="No! Please choose right version!"
+copywait="Please wait, copy all selected files ..."
+ready--1="All files copied, the USB drive can be removed now."
+help--windowtitle="                                     Please click or use cursor:"
+help_backup="Before installation / uninstallation of the selected tweaks, a copy of the /JCI folder will be copied on the USB flash drive."
+warning_15="ATTENTION - Important information##BEFORE DOING A FACTORY RESET, PLEASE UNINSTALL AT LEAST AA!#OTHERWISE THE SYSTEM STAYS AT MAZDA BOOT LOGO!##As far as we know, this could be due to the button-patch installation for Android Auto.#But it seems, that there is unfortunately no chance to get access again on the CMU after doing a factory reset if you have newer FW versions (.51x) without SSH access via WIFI.##You have to go to your dealer, say that you've done a factory reset and hope, he will help you!"
+update_found1="New version"
+update_found2="available##Will you update?"
+update_done1="Update done to new version"
+update_done2="AIO will now restart again"
+
+Which language?
+
+[1] English
+[2] German
+[3] Frensh
+[4] Spanish
+[5] Polish
+[6] Mexican
+[7] Turkish
+[8] Slovak
+
+Which color?
+
+[1] Blue
+[2] Green
+[3] Orange
+[4] Pink
+[5] Purple
+[6] Silver
+[7] Yellow
+[8] Reg (original)
+[9] carOS
+
+Speedcam patch
+
+Databases for Europe or Germany
+with or without mobile cameras
+
+[1] install for Europe with mobile cameras
+[2] install for Europe without mob. cameras
+[3] install for Germany with mobile cameras
+[4] install for Germany without mob. cameras
+[5] install for Turkey
+[6] install no speecam.txt file
+  (copy own to config\speedcam-patch)
+
+  Which version?
+
+	[1] Date to statusbar V1.0
+	    Left from clock with WLAN/BT/Akku icons above
+
+	[2] Date to statusbar V2.1
+	    Permanently visible date
+
+	[3] Date to statusbar V2.2  (dd.mm)
+	    Permanently visible numeric date
+	    Disbaled border of system messages
+	    Smaller font size for all statusbar texts
+
+	[4] Date to statusbar V2.3  (mm/dd)
+
+"end":[
+    {"endId":"01","message":"Should I copy the data directly to an USB drive card?"},
+    {"endId":"02","message":"The followoing removable drives are available:"},
+    {"endId":"03","message":"On which drive should I copy?"},
+    {"endId":"04","message":"Please copy content of created folder"."/n"."_copy_content_to_root_of_fat32_usb_stick"."/n"."to USB drive."}
+], "speedometer_options":[
+  {"speedOp":"01","title":"Speedometer Launguage?","en":"English Version","de":"German Version","sp":"Spanish Version","pl":"Polish Version","sl":"Slovak Version","tk":"Turkish Version","fr":"French Version"},
+  {"speedOp":"02","title":"MPH or KM/H?""mph":"mph","kmh":"km/h"},
+  {"speedOp":"03","title":"Activate Small Speedometer In Satusbar?","gps":"Activate (GPS Values)","car":"Activate (Car Values)","none":"Do Not Activate Small Speedometer"},
+  {"speedOp":"04","title":"Speedometer Background?","orig":"Original Background (As In V 4.2 and Below)","ind":"Individual Background"},
+  {"speedOp":"04","title":"Black Background Opacity? (To Reduce Visibility of Custom MZD Background Image)","00":"0.0 (Fully Transparent)","10":"1.0 (Completely Black)"},
+]
 
 /*
 var allOptions = {"options":[

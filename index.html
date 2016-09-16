@@ -63,7 +63,7 @@ shell.openExternal('https://github.com');
 					</label>
 					<input type="radio" class="w3-radio" name="installChoice" onclick="uninstallOptions()">
 					<label class="w3-validate">
-						Deinstall
+						Uninstall
 					</label>
 				</div>
 				<div class="form-group helpMessages w3-tooltip w3-third">
@@ -128,7 +128,7 @@ shell.openExternal('https://github.com');
 	<p id="demo"></p>
 </footer>
 </body>
-<script type="text/javascript" src="./languages/english.js"></script>
+<script type="text/javascript" src="./lang/english.js"></script>
 <script>
 w3DisplayData("options",allOptions);
 
@@ -138,6 +138,7 @@ const config = new Config();
 document.getElementById("Op01").classList.add(config.get('options.touchscreen.checked'));
 $(document).ready(function(){helpToggle();});
 function handleClick(cb) {
+
 	document.getElementById("demo").innerHTML= config.get('options.touchscreen.checked') + " Touchscreen = " + cb.checked;
 
 }
