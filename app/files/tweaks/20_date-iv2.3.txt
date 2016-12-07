@@ -1,0 +1,83 @@
+# date_to_statusbar_mod_V2.3 by diginix
+# Changes done by diginix:
+# V2.2   numeric date
+#        increase icon size (Wifi, Bluetooth...)
+#        transparent statusbar background
+#        disabled border of system messages
+#        smaller font size for all statusbar texts
+# V2.3   mm/dd
+show_message "INSTALL DATE_TO_STATUSBAR MOD V2.3 BY DIGINIX ..."
+log_message "INSTALL DATE_TO_STATUSBAR MOD V2.3 BY DIGINIX ..."
+
+statusbar_copy=0
+
+if [ ${CMU_SW_VER} = "59.00.326A-ADR" ] \
+|| [ ${CMU_SW_VER} = "59.00.331A-EU" ]
+	then
+		statusbar_copy=1
+		statusbar_copy_file=59.00.326A-ADR
+		log_message "=== FW ${CMU_SW_VER} detected, copy matching files ==="
+fi
+
+if [ ! -e /jci/gui/common/controls/Sbn/css/SbnCtrl.css.org ]
+	then
+		cp -a /jci/gui/common/controls/Sbn/css/SbnCtrl.css /jci/gui/common/controls/Sbn/css/SbnCtrl.css.org
+		log_message "=== Backup of /jci/gui/common/controls/Sbn/css/SbnCtrl.css to SbnCtrl.css.org ==="
+fi
+if [ ! -e /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css.org ]
+	then
+		cp -a /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css.org
+		log_message "=== Backup of /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css to StatusBarCtrl.css.org ==="
+fi
+if [ ! -e /jci/gui/common/controls/StatusBar/images/StatusBarBg.png.org ]
+	then
+		cp -a /jci/gui/common/controls/StatusBar/images/StatusBarBg.png /jci/gui/common/controls/StatusBar/images/StatusBarBg.png.org
+		log_message "=== Backup of /jci/gui/common/controls/StatusBar/images/StatusBarBg.png to StatusBarBg.png.org ==="
+fi
+if [ ! -e /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js.org ]
+	then
+		cp -a /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js.org
+		log_message "=== Backup of /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js to StatusBarCtrl.js.org ==="
+fi
+if [ ! -e /jci/gui/common/images/icons/IcnSbRoaming.png.org ]
+	then
+		cp -a /jci/gui/common/images/icons/IcnSbRoaming.png /jci/gui/common/images/icons/IcnSbRoaming.png.org
+		log_message "=== Backup of /jci/gui/common/images/icons/IcnSbRoaming.png to IcnSbRoaming.png.org ==="
+fi
+if [ ! -e /jci/gui/framework/js/Utility.js.org ]
+	then
+		cp -a /jci/gui/framework/js/Utility.js /jci/gui/framework/js/Utility.js.org
+		log_message "=== Backup of /jci/gui/framework/js/Utility.js to Utility.js.org ==="
+fi
+
+if [ ${statusbar_copy} = "1" ]
+	then
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/Sbn/css/SbnCtrl.v2.2.${statusbar_copy_file}.css /jci/gui/common/controls/Sbn/css/SbnCtrl.css
+		log_message "=== Copied /jci/gui/common/controls/Sbn/css/SbnCtrl.css for FW ${CMU_SW_VER} ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/css/StatusBarCtrl.v2.2.${trackorder_copy_file}.css /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css for FW ${CMU_SW_VER} ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/images/StatusBarBg.v2.2.png /jci/gui/common/controls/StatusBar/images/StatusBarBg.png
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/images/StatusBarBg.png ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/js/StatusBarCtrl.v2.2.${statusbar_copy_file}.js /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js for FW ${CMU_SW_VER} ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/images/icons/IcnSbRoaming.v2.png /jci/gui/common/images/icons/IcnSbRoaming.png
+		log_message "=== Copied /jci/gui/common/images/icons/IcnSbRoaming.png ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/framework/js/Utility.v2.3.js /jci/gui/framework/js/Utility.js
+		log_message "=== Copied /jci/gui/framework/js/Utility.js ==="
+	else
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/Sbn/css/SbnCtrl.v2.2.css /jci/gui/common/controls/Sbn/css/SbnCtrl.css
+		log_message "=== Copied /jci/gui/common/controls/Sbn/css/SbnCtrl.css ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/css/StatusBarCtrl.v2.2.css /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/css/StatusBarCtrl.css ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/images/StatusBarBg.v2.2.png /jci/gui/common/controls/StatusBar/images/StatusBarBg.png
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/images/StatusBarBg.png ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/controls/StatusBar/js/StatusBarCtrl.v2.2.js /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js
+		log_message "=== Copied /jci/gui/common/controls/StatusBar/js/StatusBarCtrl.js ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/common/images/icons/IcnSbRoaming.v2.png /jci/gui/common/images/icons/IcnSbRoaming.png
+		log_message "=== Copied /jci/gui/common/images/icons/IcnSbRoaming.png ==="
+		cp -a ${MYDIR}/config/date-to-statusbar_mod/jci/gui/framework/js/Utility.v2.3.js /jci/gui/framework/js/Utility.js
+		log_message "=== Copied /jci/gui/framework/js/Utility.js ==="
+fi
+
+log_message "END INSTALLATION OF DATE_TO_STATUSBAR_MOD_V2.3 BY DIGINIX"
+log_message " "

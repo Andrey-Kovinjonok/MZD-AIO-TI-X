@@ -1,0 +1,29 @@
+# remove list_loop_mod_by_diginix
+show_message "REMOVE LIST_LOOP_MOD  ..."
+log_message "REMOVE LIST_LOOP_MOD  ..."
+trackorder_copy=0
+
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] || [ ${CMU_SW_VER} = "59.00.326A-ADR" ]
+	then
+		trackorder_copy=1
+		trackorder_copy_file=${CMU_SW_VER}
+		log_message "=== FW ${CMU_SW_VER} detected, copy matching systemApp.js ==="
+fi
+if test -s /jci/gui/common/controls/List2/js/List2Ctrl.js.org
+	then
+		log_message "=== Original List2Ctrl.js is available as backup ==="
+		rm -f /jci/gui/common/controls/List2/js/List2Ctrl.js
+		mv /jci/gui/common/controls/List2/js/List2Ctrl.js.org /jci/gui/common/controls/List2/js/List2Ctrl.js
+	else
+		if [ ${trackorder_copy} = "0" ]
+			then
+				cp -a ${MYDIR}/config_org/list-loop/jci/gui/common/controls/List2/js/List2Ctrl.js /jci/gui/common/controls/List2/js/
+				log_message "=== No backup of List2Ctrl.js available, copied from SD card ==="
+			else
+				cp -a ${MYDIR}/config_org/list-loop/jci/gui/common/controls/List2/js/List2Ctrl.${trackorder_copy_file}.js /jci/gui/common/controls/List2/js/List2Ctrl.js
+				log_message "=== Restored List2Ctrl.js for ${CMU_SW_VER} from SD card ==="
+		fi
+fi
+
+log_message "END DEINSTALLATION OF LIST_LOOP_MOD_BY_DIGINIX"
+log_message " "

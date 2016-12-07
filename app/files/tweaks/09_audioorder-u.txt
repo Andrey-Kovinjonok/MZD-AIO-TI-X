@@ -1,0 +1,45 @@
+# restore order of the audio source list
+show_message "RESTORE ORDER OF AUDIO SOURCE LIST TO ORIGINAL..."
+log_message "RESTORE ORDER OF AUDIO SOURCE LIST TO ORIGINAL..."
+trackorder_copy=0
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] || [ ${CMU_SW_VER} = "59.00.326A-ADR" ]
+	then
+		trackorder_copy=1
+		trackorder_copy_file=58.00.250A-NA
+		log_message "=== FW ${CMU_SW_VER} detected, copy matching systemApp.js ==="
+fi
+
+if test -s /jci/gui/apps/system/js/systemApp.js.org
+	then
+		log_message "=== Original systemApp.js is available as backup ==="
+		log_message "rm -f /jci/gui/apps/system/js/systemApp.js is probably not necessary"
+		cp -a /jci/gui/apps/system/js/systemApp.js.org /jci/gui/apps/system/js/systemApp.js
+	else
+		log_message "=== No more systemApp.js.org available ==="
+fi
+
+if [ -e /jci/gui/apps/system/js/systemApp.js.disclaimer ]
+	then
+		if [ ${trackorder_copy} = "1" ]
+			then
+				cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/only_no_More_Disclaimer/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+				log_message "=== Restored order of audio source list for ${CMU_SW_VER}, disclaimer still gone ==="
+			else
+				cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/only_no_More_Disclaimer/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+				log_message "=== Restored order of audio source list, disclaimer still gone ==="
+		fi
+	else
+		if [ ${trackorder_copy} = "1" ]
+			then
+				cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/nothing/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+				log_message "=== Restored order of audio source list for ${CMU_SW_VER} ==="
+			else
+				cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/nothing/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+				log_message "=== Restored order of audio source list ==="
+		fi
+fi
+
+rm -f /jci/gui/apps/system/js/systemApp.js.audio
+log_message "=== Removed /jci/gui/apps/system/js/systemApp.js.audio ==="
+log_message "END RESTORING ORDER OF THE AUDIO SOURCE LIST TO ORIGINAL"
+log_message " "

@@ -1,0 +1,12 @@
+# reduce disclaimer time
+show_message "REDUCE DISCLAIMER TIME ..."
+chmod 755 /jci/gui/apps/system/js/systemApp.js
+if [ ! -e /jci/gui/apps/system/js/systemApp.js.org ]
+then
+	cp -a /jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/systemApp.js.org
+	cp -a /jci/gui/apps/system/js/systemApp.js.org `${MYDIR}/bakups/`
+	log_message "=== Backup of /jci/gui/apps/system/js/systemApp.js to systemApp.org ==="
+fi
+sed -i 's/this._disclaimerTime.remaining = 3500/this._disclaimerTime.remaining = 500/g' /jci/gui/apps/system/js/systemApp.js
+log_message "=== DISCLAIMER REDUCED TO 0.5 SECONDS ==="
+log_message " "

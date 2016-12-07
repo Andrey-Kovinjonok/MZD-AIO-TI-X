@@ -1,0 +1,21 @@
+log_message " "
+sleep 2
+log_message "END OF TWEAKS INSTALLATION"
+show_message "END OF TWEAKS INSTALLATION"
+
+# a window will appear before the system reboots automatically
+sleep 3
+killall jci-dialog
+/jci/tools/jci-dialog --info --title="SELECTED AIO TWEAKS APPLIED" --text="THE SYSTEM WILL REBOOT IN A FEW SECONDS!" --no-cancel &
+sleep 10
+killall jci-dialog
+reboot
+#/jci/tools/jci-dialog --confirm --title="SELECTED AIO TWEAKS APPLIED" --text="Click OK to reboot the system"
+#		if [ $? != 1 ]
+#		then
+#			sleep 10
+#			reboot
+#			exit
+#		fi
+#sleep 2
+#killall jci-dialog

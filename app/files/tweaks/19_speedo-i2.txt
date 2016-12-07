@@ -1,0 +1,4 @@
+cp /jci/opera/opera_dir/userjs/speedometer-startup.js ${MYDIR}
+
+log_message "END INSTALLATION OF SPEEDOMETER"
+log_message " "

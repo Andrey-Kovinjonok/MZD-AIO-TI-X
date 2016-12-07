@@ -1,0 +1,53 @@
+# change order of the audio source list
+show_message "CHANGE ORDER OF AUDIO SOURCE LIST ..."
+log_message "CHANGE ORDER OF AUDIO SOURCE LIST ..."
+trackorder_copy=0
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] || [ ${CMU_SW_VER} = "59.00.326A-ADR" ]
+then
+  trackorder_copy=1
+  trackorder_copy_file=58.00.250A-NA
+  log_message "=== FW ${CMU_SW_VER} detected, copy matching systemApp.js ==="
+fi
+
+if [ ! -e /jci/gui/apps/system/js/systemApp.js.org ]
+then
+  cp -a /jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/systemApp.js.org
+  log_message "=== Backup of /jci/gui/apps/system/js/systemApp.js to systemApp.js.org ==="
+fi
+
+if [ ${KEEPBKUPS} = "1" ]
+then
+  cp -a /jci/gui/apps/system/js/systemApp.js.org "${MYDIR}/bakups/"
+  aio_info "- Backup Saved: systemApp.js.org"
+fi
+
+cp -a ${MYDIR}/config/audio_order_AND_no_More_Disclaimer/systemApp.js.audio /jci/gui/apps/system/js/
+log_message "=== Added marker 'systemApp.js.audio' for installing 'change order of the audio source list' ==="
+
+if [ -e /jci/gui/apps/system/js/systemApp.js.disclaimer ]
+then
+  if [ ${trackorder_copy} = "1" ]
+  then
+    cp -a ${MYDIR}/config/audio_order_AND_no_More_Disclaimer/both/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+    log_message "=== Changed order of audio source list, disclaimer still gone ==="
+  else
+    cp -a ${MYDIR}/config/audio_order_AND_no_More_Disclaimer/both/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+    log_message "=== Changed order of audio source list, disclaimer still gone ==="
+  fi
+else
+  if [ ${trackorder_copy} = "1" ]
+  then
+    cp -a ${MYDIR}/config/audio_order_AND_no_More_Disclaimer/only_change_audio_order/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+    log_message "=== Changed order of audio source list (no-more-disclaimer was not installed) ==="
+  else
+    cp -a ${MYDIR}/config/audio_order_AND_no_More_Disclaimer/only_change_audio_order/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+    log_message "=== Changed order of audio source list (no-more-disclaimer was not installed) ==="
+  fi
+fi
+if [ ${KEEPBKUPS} = "1" ]
+then
+  cp -a /jci/gui/apps/system/js/systemApp.js "${MYDIR}/bakups/systemApp.js.audio"
+  aio_info "- Backup Saved: systemApp.js.audio"
+fi
+log_message "END INSTALLATION OF CHANGE ORDER OF THE AUDIO SOURCE LIST"
+log_message " "

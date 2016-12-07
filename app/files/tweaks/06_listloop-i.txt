@@ -1,0 +1,31 @@
+# list_loop_mod_by_diginix
+show_message "INSTALL LIST_LOOP_MOD ..."
+log_message "INSTALL LIST_LOOP_MOD ..."
+trackorder_copy=0
+
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] || [ ${CMU_SW_VER} = "59.00.326A-ADR" ]
+	then
+		trackorder_copy=1
+		trackorder_copy_file=${CMU_SW_VER}
+		log_message "=== FW ${CMU_SW_VER} detected, copy matching systemApp.js ==="
+fi
+
+if [ ! -e /jci/gui/common/controls/List2/js/List2Ctrl.js.org ]
+	then
+		cp -a /jci/gui/common/controls/List2/js/List2Ctrl.js /jci/gui/common/controls/List2/js/List2Ctrl.js.org
+		log_message "=== Backup of /jci/gui/common/controls/List2/js/List2Ctrl.js to List2Ctrl.js.org ==="
+fi
+cp -a /jci/gui/common/controls/List2/js/List2Ctrl.js.org "${MYDIR}/backups/"
+log_message "=== Backup of List2Ctrl.js.org to ${MYDIR}/backups/ ==="
+
+if [ ${trackorder_copy} = "1" ]
+	then
+		cp -a ${MYDIR}/config/list-loop/jci/gui/common/controls/List2/js/List2Ctrl.${trackorder_copy_file}.js /jci/gui/common/controls/List2/js/List2Ctrl.js
+		log_message "=== Copied /jci/gui/common/controls/List2/js/List2Ctrl.js from SD card for ${CMU_SW_VER} ==="
+	else
+		cp -a ${MYDIR}/config/list-loop/jci/gui/common/controls/List2/js/List2Ctrl.js /jci/gui/common/controls/List2/js/
+		log_message "=== Copied /jci/gui/common/controls/List2/js/List2Ctrl.js from SD card ==="
+fi
+
+log_message "END NSTALLATION OF LIST_LOOP_MOD_BY_DIGINIX"
+log_message " "

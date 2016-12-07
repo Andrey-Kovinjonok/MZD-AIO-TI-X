@@ -1,0 +1,17 @@
+# make full backup to SD card
+BACKUPDIR=${MYDIR}/JCI-Backup
+show_message "MAKE FULL BACKUP OF /JCI TO\n ${BACKUPDIR}. \n Please wait... this will take a few minutes ..."
+log_message "MAKE FULL BACKUP OF /JCI TO ${BACKUPDIR}"
+mkdir ${BACKUPDIR}
+log_message "=== Backup directory '${BACKUPDIR}' created ==="
+if [ -d ${BACKUPDIR} ]; then
+	log_message "=== Backing up /jci to ${BACKUPDIR} ==="
+	cp -R /jci ${BACKUPDIR}
+	log_message "JCI BACKUP SUCCESS - WAIT FOR TWEAKS NOW"
+	show_message "JCI BACKUP SUCCESS - Wait for tweaks now ..."
+else
+	log_message "BACKUP DIRECTORY ${BACKUPDIR} DOES NOT EXIST"
+	show_message "JCI BACKUP FAILED! - Wait for tweaks now..."
+fi
+log_message "___"
+log_message ""

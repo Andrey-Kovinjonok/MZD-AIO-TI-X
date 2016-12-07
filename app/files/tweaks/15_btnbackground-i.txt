@@ -1,0 +1,22 @@
+# no button background graphics
+show_message "INSTALL NO BUTTON BACKGROUND GRAPHICS ..."
+log_message "INSTALL NO BUTTON BACKGROUND GRAPHICS ..."
+if [ ! -e /jci/gui/common/controls/Ump3/images/UMP_Bg.png.org ]
+	then
+		cp -a /jci/gui/common/controls/Ump3/images/UMP_Bg.png /jci/gui/common/controls/Ump3/images/UMP_Bg.png.org
+		log_message "=== Backup of /jci/gui/common/controls/Ump3/images/UMP_Bg.png to UMP_Bg.png.org ==="
+fi
+if [ ! -e /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png.org ]
+	then
+		cp -a /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png.org
+		log_message "=== Backup of /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png to UMP_Bg_Arch.png.org ==="
+fi
+if [ ! -e /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png.org ]
+	then
+		cp -a /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png.org
+		log_message "=== Backup of /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png to UMP_Btn_Separator.png.org ==="
+fi
+cp -a ${MYDIR}/config/NoButtons/jci/gui/common/controls/Ump3/images/*.png /jci/gui/common/controls/Ump3/images/
+log_message "=== Copied /jci/gui/common/controls/Ump3/images/*.png ==="
+log_message "END NO BUTTON BACKGROUND GRAPHICS"
+log_message " "

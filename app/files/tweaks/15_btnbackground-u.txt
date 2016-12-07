@@ -1,0 +1,32 @@
+# restore button background graphics
+show_message "RESTORE BUTTON BACKGROUND GRAPHICS ..."
+log_message "RESTORE BUTTON BACKGROUND GRAPHICS ..."
+if test -s /jci/gui/common/controls/Ump3/images/UMP_Bg.png.org
+	then
+		rm -f /jci/gui/common/controls/Ump3/images/UMP_Bg.png
+		mv /jci/gui/common/controls/Ump3/images/UMP_Bg.png.org /jci/gui/common/controls/Ump3/images/UMP_Bg.png
+		log_message "=== Restored /jci/gui/common/controls/Ump3/images/UMP_Bg.png ==="
+	else
+		cp -a ${MYDIR}/config_org/NoButtons/jci/gui/common/controls/Ump3/images/UMP_Bg.png /jci/gui/common/controls/Ump3/images/
+		log_message "=== No UMP_Bg.png.org, copied from SD card ==="
+fi
+if test -s /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png.org
+	then
+		rm -f /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png
+		mv /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png.org /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png
+		log_message "=== Restored /jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png ==="
+	else
+		cp -a ${MYDIR}/config_org/NoButtons/jci/gui/common/controls/Ump3/images/UMP_Bg_Arch.png /jci/gui/common/controls/Ump3/images/
+		log_message "=== No UMP_Bg_Arch.png.org, copied from SD card ==="
+fi
+if test -s /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png.org
+	then
+		rm -f /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png
+		mv /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png.org /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png
+		log_message "=== Restored /jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png ==="
+	else
+		cp -a ${MYDIR}/config_org/NoButtons/jci/gui/common/controls/Ump3/images/UMP_Btn_Separator.png /jci/gui/common/controls/Ump3/images/
+		log_message "=== No UMP_Btn_Separator.png.org, copied from SD card ==="
+fi
+log_message "END BUTTON BACKGROUND GRAPHICS"
+log_message " "

@@ -1,0 +1,55 @@
+# remove pause on mute for 56.00.100A/.230A/.511A/.512A/.513B-EU, 55.00.753A-NA
+show_message "REMOVE PAUSE_ON_MUTE  ..."
+log_message "REMOVE PAUSE_ON_MUTE  ..."
+
+if [ ${CMU_SW_VER} = "56.00.100A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.230A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.240B-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.230A-EU" ] \
+|| [ ${CMU_SW_VER} = "55.00.650A-NA" ] \
+|| [ ${CMU_SW_VER} = "55.00.753A-NA" ] \
+|| [ ${CMU_SW_VER} = "55.00.760A-NA" ] \
+|| [ ${CMU_SW_VER} = "56.00.401A-JP" ]
+	then
+		pause_copy=1
+		pause_copy_file=56.00.230A-EU
+fi
+
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] \
+|| [ ${CMU_SW_VER} = "59.00.326A-ADR" ] \
+|| [ ${CMU_SW_VER} = "59.00.331A-EU" ]
+	then
+		pause_copy=1
+		pause_copy_file=58.00.250A-NA
+fi
+
+if [ ${CMU_SW_VER} = "56.00.511A-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.512A-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.513B-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.513C-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.511A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.512A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.513C-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.521A-NA" ]
+	then
+		pause_copy=1
+		pause_copy_file=56.00.511A-EU
+fi
+
+if test -s /jci/gui/common/js/Common.js.org
+	then
+		log_message "=== Original Common.js is available as backup ==="
+#		rm -f /jci/gui/common/js/Common.js
+#		mv /jci/gui/common/js/Common.js.org /jci/gui/common/js/Common.js
+		cp /jci/gui/common/js/Common.js.org /jci/gui/common/js/Common.js
+	else
+		log_message "=== No backup of Common.js available, copied from SD card ==="
+fi
+
+if [ ${pause_copy} = "1" ]
+		then
+			cp -a ${MYDIR}/config_org/pause-on-mute/jci/gui/common/js/Common.js.${pause_copy_file} /jci/gui/common/js/Common.js
+			log_message "=== Detected ${CMU_SW_VER}: Copied fitting original /jci/gui/common/js/Common.js ==="
+fi
+log_message "END DEINSTALLATION OF PAUSE-ON-MUTE"
+log_message " "

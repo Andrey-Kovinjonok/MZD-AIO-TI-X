@@ -1,0 +1,53 @@
+# pause on mute
+show_message "INSTALL PAUSE_ON_MUTE ..."
+log_message "INSTALL PAUSE_ON_MUTE ..."
+
+if [ ${CMU_SW_VER} = "56.00.100A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.230A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.240B-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.230A-EU" ] \
+|| [ ${CMU_SW_VER} = "55.00.650A-NA" ] \
+|| [ ${CMU_SW_VER} = "55.00.753A-NA" ] \
+|| [ ${CMU_SW_VER} = "55.00.760A-NA" ] \
+|| [ ${CMU_SW_VER} = "56.00.401A-JP" ]
+	then
+		pause_copy=1
+		pause_copy_file=56.00.230A-EU
+fi
+
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] \
+|| [ ${CMU_SW_VER} = "59.00.326A-ADR" ] \
+|| [ ${CMU_SW_VER} = "59.00.331A-EU" ]
+	then
+		pause_copy=1
+		pause_copy_file=58.00.250A-NA
+fi
+
+if [ ${CMU_SW_VER} = "56.00.511A-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.512A-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.513B-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.513C-EU" ] \
+|| [ ${CMU_SW_VER} = "56.00.511A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.512A-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.513C-ADR" ] \
+|| [ ${CMU_SW_VER} = "56.00.521A-NA" ]
+	then
+		pause_copy=1
+		pause_copy_file=56.00.511A-EU
+fi
+
+if [ ! -e /jci/gui/common/js/Common.js.org ]
+	then
+		cp -a /jci/gui/common/js/Common.js /jci/gui/common/js/Common.js.org
+		log_message "=== Backup of /jci/gui/common/js/Common.js to Common.js.org ==="
+		cp -a /jci/gui/common/js/Common.js.org "${MYDIR}/bakups/"
+		log_message "=== Backup of Common.js.org to ${MYDIR}/bakups/ ==="
+fi
+if [ ${pause_copy} = "1" ]
+		then
+			cp -a ${MYDIR}/config/pause-on-mute/jci/gui/common/js/Common.js.${pause_copy_file} /jci/gui/common/js/Common.js
+			log_message "=== Detected ${CMU_SW_VER}: Copied fitting patched /jci/gui/common/js/Common.js ==="
+fi
+
+log_message "END INSTALLATION OF PAUSE-ON-MUTE"
+log_message " "

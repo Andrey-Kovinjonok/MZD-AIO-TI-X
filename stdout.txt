@@ -1,4 +1,0 @@
-CountryCode Detection: 
-CCode =  
-CountryCode =  
- 

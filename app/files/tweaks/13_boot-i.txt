@@ -1,0 +1,23 @@
+# disable boot animation
+show_message "DISABLE BOOT ANIMATION ..."
+log_message "DISABLE BOOT ANIMATION ..."
+if [ ! -e /jci/resources/TranLogo.ivf.org ]
+	then
+		mv /jci/resources/TranLogo.ivf /jci/resources/TranLogo.ivf.org
+		log_message "=== Backup of /jci/resources/TranLogo.ivf to TranLogo.ivf.org ==="
+	else
+		log_message "=== Backup of /jci/resources/TranLogo.ivf.org available ==="
+fi
+if [ ! -e /jci/resources/TranLogoEnd.ivf.org ]
+	then
+		mv /jci/resources/TranLogoEnd.ivf /jci/resources/TranLogoEnd.ivf.org
+		log_message "=== Backup of /jci/resources/TranLogoEnd.ivf to TranLogoEnd.ivf.org ==="
+	else
+		log_message "=== Backup of /jci/resources/TranLogoEnd.ivf.org available ==="
+fi
+cp -a /jci/resources/LoopLogo.ivf /jci/resources/TranLogo.ivf
+log_message "=== Copied LoopLogo.ivf to TranLogo.ivf ==="
+cp -a /jci/resources/LoopLogo.ivf /jci/resources/TranLogoEnd.ivf
+log_message "=== Copied LoopLogo.ivf to TranLogoEnd.ivf ==="
+log_message "END DISABLE BOOT ANIMATION"
+log_message " "

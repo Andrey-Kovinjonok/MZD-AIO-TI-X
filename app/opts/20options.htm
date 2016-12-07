@@ -1,0 +1,24 @@
+<!--
+- MZD-AIO-TI
+- By: Trezdog44 - Trevor Martin
+- http://mazdatweaks.com
+- ©2016 Trevelopment
+-
+- Custom Options For Date_To_Statusbar_Mod Tweak
+-
+-->
+<table>
+	<tbody class="w3-col">
+		<tr ng-repeat="option in d2sbOps | filter:twkfltr" class="w3-hover-pale-blue w3-tooltip w3-half">
+			<td>
+				<div class="d2sb-check extraRadio">
+					<input id="d2sb{{option.id}}" type="radio" name="{{option.label}}" ng-model="user.d2sbOps" ng-value="option.id" ng-disabled="user.d2sbOps.indexOf({{option.id}}) == -1 && user.d2sbOps.length > 0">
+					<label for="d2sb{{option.id}}" title="{{option.label}}" class="{{option.label}}"></label>
+				</div>
+			</td>
+			<td>
+				<label for="d2sb{{option.id}}" title="{{option.label}}">{{option.label}}</label>
+			</td>
+		</tr>
+	</tbody>
+</table>

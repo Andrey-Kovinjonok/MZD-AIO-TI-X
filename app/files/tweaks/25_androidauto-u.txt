@@ -1,0 +1,80 @@
+# Remove Android Auto Headunit App
+show_message "REMOVE ANDROID AUTO HEADUNIT APP ..."
+log_message "REMOVE ANDROID AUTO HEADUNIT APP ..."
+
+### kills all WebSocket daemons
+pkill websocketd
+
+cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_androidauto-before.sh
+cp /jci/opera/opera_dir/userjs/additionalApps.json ${MYDIR}/additionalApps_androidauto-1._before.json
+cp /jci/sm/sm.conf ${MYDIR}/sm_androidauto-before.conf
+
+rm -fr /tmp/mnt/data_persist/dev/androidauto
+rm -f /tmp/mnt/data_persist/dev/bin/websocketd
+rm -f /tmp/mnt/data_persist/dev/bin/headunit
+rm -f /tmp/mnt/data_persist/dev/bin/aaserver
+rm -f /tmp/mnt/data_persist/dev/bin/headunit-wrapper
+rm -f /tmp/mnt/data_persist/dev/bin/input_filter
+rm -fr /jci/gui/apps/_androidauto
+rm -f /tmp/mnt/data/enable_input_filter
+rm -f /tmp/mnt/data/input_filter
+rm -f /usr/lib/gstreamer-0.10/libgsth264parse.so
+log_message "=== Removed files for Android Auto Headunit App ==="
+
+if test -s /usr/lib/gstreamer-0.10/libgstalsa.so.org
+	then
+		rm -f /usr/lib/gstreamer-0.10/libgstalsa.so
+		log_message "=== Original libgstalsa.so is available as backup ==="
+		mv /usr/lib/gstreamer-0.10/libgstalsa.so.org /usr/lib/gstreamer-0.10/libgstalsa.so
+		/bin/fsync /usr/lib/gstreamer-0.10/libgstalsa.so
+	else
+		cp -a ${MYDIR}/config_org/androidauto/usr/lib/gstreamer-0.10/libgstalsa.so /usr/lib/gstreamer-0.10/
+		chmod 755 /usr/lib/gstreamer-0.10/libgstalsa.so
+fi
+
+# delete Android Auto entry from /jci/opera/opera_dir/userjs/additionalApps.json
+if grep -Fq "_speedometer" /jci/opera/opera_dir/userjs/additionalApps.json
+	then
+		log_message "=== Found speedometer entry in /jci/opera/opera_dir/userjs/additionalApps.json ==="
+		appmenu_speedometer=1
+	else
+		log_message "=== No speedometer entry found in /jci/opera/opera_dir/userjs/additionalApps.json ==="
+		appmenu_speedometer=0
+fi
+if grep -Fq "_videoplayer" /jci/opera/opera_dir/userjs/additionalApps.json
+	then
+		log_message "=== Found videoplayer entry in /jci/opera/opera_dir/userjs/additionalApps.json ==="
+		appmenu_videoplayer=1
+	else
+		log_message "=== No videoplayer entry found in /jci/opera/opera_dir/userjs/additionalApps.json ==="
+		appmenu_videoplayer=0
+fi
+if [ ${appmenu_speedometer} = "0" ] && [ ${appmenu_videoplayer} = "0" ]
+	then
+		log_message "=== No more entrys in additionalApps.json, files will be deleted ==="
+		rm -f /jci/opera/opera_dir/userjs/additionalApps.*
+	else
+		remove_app_json "_androidauto"
+fi
+
+sed -i '/Android Auto start/d' /jci/scripts/stage_wifi.sh
+sed -i '/hwclock --hctosys/d' /jci/scripts/stage_wifi.sh
+sed -i '/websocketd --port=9999 sh &/d' /jci/scripts/stage_wifi.sh
+log_message "=== Deleted modifications from /jci/scripts/stage_wifi.sh ==="
+if test -s /jci/sm/sm.conf.AA
+	then
+		rm -f jci/sm/sm.conf
+		mv /jci/sm/sm.conf.AA /jci/sm/sm.conf
+		log_message "=== Restored backup from sm.conf ==="
+	else
+		sed -i '/input_filter/d' /jci/sm/sm.conf
+		log_message "=== No backup of sm.conf, modified sm.conf instead ==="
+fi
+rm -f /jci/scripts/stage_wifi.sh.org3
+rm -f /jci/scripts/stage_wifi.sh.AA
+
+cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_androidauto-after.sh
+cp /jci/sm/sm.conf ${MYDIR}/sm_androidauto-after.conf
+
+log_message "END DEINSTALLATION OF ANDROID AUTO HEADUNIT APP"
+log_message " "

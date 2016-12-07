@@ -1,0 +1,14 @@
+# restore message replies
+show_message "RESTORE MESSAGE REPLIES ..."
+log_message "RESTORE MESSAGE REPLIES ..."
+if test -s /jci/settings/configurations/blm_msg-system.xml.org
+	then
+		rm -f /jci/settings/configurations/blm_msg-system.xml.org
+		log_message "=== Removed /jci/settings/configurations/blm_msg-system.xml.org ==="
+	else
+		log_message "=== No more blm_msg-system.xml.org available ==="
+fi
+cp -a ${MYDIR}/config_org/message_replies/jci/settings/configurations/blm_msg-system.xml /jci/settings/configurations
+log_message "=== Copied /jci/settings/configurations/blm_msg-system.xml ==="
+log_message "END RESTORING MESSAGE REPLIES LIST TO ORIGINAL"
+log_message " "
