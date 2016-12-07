@@ -1,0 +1,32 @@
+# Install Castscreen receiver
+show_message "INSTALL CASTSCREEN-RECEIVER ..."
+cp -a ${MYDIR}/config/castscreen-receiver/* /jci/scripts/
+rm -f /jci/scripts/cs_receiver_conn_arm
+log_message "=== Copied castscreen-receiver files to /jci/scripts/ ==="
+chmod 755 /jci/scripts/wait_adb_arm.sh
+chmod 755 /jci/scripts/adb
+chmod 755 /jci/scripts/cs_receiver_arm
+chmod 755 /jci/scripts/mirroring.sh
+cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_castscreen-before.sh
+#add castscreen-receiver to stage_wifi
+if [ -e /jci/scripts/stage_wifi.sh ]
+	then
+		if grep -Fq "watch /jci/scripts/mirroring.sh &" /jci/scripts/stage_wifi.sh
+			then
+				echo "exist"
+				log_message "=== Modifications already done to /jci/scripts/stage_wifi.sh ==="
+			else
+				#first backup
+				cp -a /jci/scripts/stage_wifi.sh /jci/scripts/stage_wifi.sh.org2
+				log_message "=== Backup of /jci/scripts/stage_wifi.sh to stage_wifi.sh.org2==="
+				echo "### Castscreen receiver watch" >> /jci/scripts/stage_wifi.sh
+				echo "watch /jci/scripts/mirroring.sh &" >> /jci/scripts/stage_wifi.sh
+				sed -i '/Castscreen receiver watch/ i\' /jci/scripts/stage_wifi.sh
+				log_message "=== Modifications added to /jci/scripts/stage_wifi.sh ==="
+				cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_castscreen-after.sh
+			break
+		fi
+fi
+
+log_message "END INSTALLATION OF CASTSCREEN-RECEIVER"
+log_message " "

@@ -1,0 +1,12 @@
+# remove message replies
+show_message "REMOVE MESSAGE REPLIES ..."
+log_message "REMOVE MESSAGE REPLIES ..."
+if [ ! -e /jci/settings/configurations/blm_msg-system.xml.org ]
+	then
+		cp -a /jci/settings/configurations/blm_msg-system.xml /jci/settings/configurations/blm_msg-system.xml.org
+		log_message "=== Backup of /jci/settings/configurations/blm_msg-system.xml to blm_msg-system.xml.org ==="
+fi
+cp -a ${MYDIR}/config/message_replies/jci/settings/configurations/blm_msg-system.xml /jci/settings/configurations
+log_message "=== Copied /jci/settings/configurations/blm_msg-system.xml ==="
+log_message "END REMOVING MESSAGE REPLIES"
+log_message " "

@@ -1,0 +1,5 @@
+# remove safety warning from reverse camera for 12 different countrys
+show_message "REMOVE SAFETY WARNING FROM REVERSE CAMERA ..."
+cp -a ${MYDIR}/config/safety-warning-reverse-camera/jci/nativegui/images/*.png /jci/nativegui/images/
+log_message "=== REMOVED SAFETY WARNING FROM REVERSE CAMERA ==="
+log_message " "

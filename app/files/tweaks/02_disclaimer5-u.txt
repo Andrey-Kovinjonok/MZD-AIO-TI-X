@@ -1,0 +1,6 @@
+# restore disclaimer time to 3.5 sec.
+show_message "RESTORE DISCLAIMER TO 3.5 SEC. ..."
+sed -i 's/this._disclaimerTime.remaining = 500/this._disclaimerTime.remaining = 3500/g' /jci/gui/apps/system/js/systemApp.js
+rm -f /jci/gui/apps/system/js/systemApp.js.org
+log_message "=== DISCLAIMER RESTORED TO 3.5 SECONDS AND AUDIO SOURCE LIST BACK TO ORIGINAL ==="
+log_message " "

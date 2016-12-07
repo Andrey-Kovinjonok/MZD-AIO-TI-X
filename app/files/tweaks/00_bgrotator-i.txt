@@ -1,0 +1,18 @@
+# change background image & common.css to rotate through 10 backgrounds
+show_message "INSTALL BACKGROUND ROTATOR ..."
+log_message "INSTALL BACKGROUND ROTATOR ..."
+if [ ! -e /jci/gui/common/css/common.css.org ]
+	then
+		cp -a /jci/gui/common/css/common.css /jci/gui/common/css/common.css.org
+		log_message "=== Backup of /jci/gui/common/css/common.css to common.css.org ==="
+fi
+if [ "${KEEPBKUPS}" = 1 ]
+then
+  aio_info "- Backup Saved: common.css.org"
+  cp /jci/gui/common/css/common.css.org "${MYDIR}/bakups/"
+fi
+cp -a ${MYDIR}/config/BackgroundRotator/jci/gui/common/css/common.css /jci/gui/common/css/
+log_message "BACKGROUND IMAGE & COMMON.CSS CHANGED"
+log_message " "
+# Dont need this because the background tweak will always run after and take care of it
+# cp -a ${MYDIR}/config/background.png /jci/gui/common/images/

@@ -1,0 +1,35 @@
+# ssh_bringback for 56.00.511A/512A/513B-EU, script made by Sumire_Racing_JPN 2016.02.13
+# with previous files (passwd, authorized_keys, sshd_config, jci-fw.sh, etc..)
+if [ ${CMU_SW_VER} = "56.00.511A-EU" ] || [ ${CMU_SW_VER} = "56.00.512A-EU" ] || [ ${CMU_SW_VER} = "56.00.513B-EU" ] || [ ${CMU_SW_VER} = "56.00.511A-ADR" ] || [ ${CMU_SW_VER} = "56.00.512A-ADR" ] || [ ${CMU_SW_VER} = "56.00.513C-ADR" ]
+	then
+		ssh_copy=1
+fi
+if [ ${ssh_copy} = "1" ]
+		then
+			cp /jci/scripts/jci-fw.sh ${MYDIR}/config/jci-fw.sh.test
+			if grep -Fq 'Disable ICMP services CI-2952' ${MYDIR}/config/jci-fw.sh.test
+				then
+					show_message "${CMU_SW_VER} DETECTED: SSH_BRINGBACK WILL BE INSTALLED ..."
+					cp ${MYDIR}/config/ssh_bringback/passwd /tmp
+					cp ${MYDIR}/config/ssh_bringback/authorized_keys /tmp
+					cp ${MYDIR}/config/ssh_bringback/sshd_config /etc/ssh
+					cp ${MYDIR}/config/ssh_bringback/jci-fw.sh /jci/scripts
+					cp ${MYDIR}/config/ssh_bringback/start_network.sh /jci/scripts
+					cp ${MYDIR}/config/ssh_bringback/TestCtrl.js /jci/gui/apps/diag/controls/Test/js
+					cp ${MYDIR}/config/ssh_bringback/config-update.sh /tmp
+					cp ${MYDIR}/config/ssh_bringback/mksquashfs /tmp
+					cp ${MYDIR}/config/ssh_bringback/passwd_update.sh /tmp
+					chmod 755 /jci/scripts/jci-fw.sh
+					chmod 755 /jci/scripts/start_network.sh
+					chmod 755 /tmp/config-update.sh
+					chmod 755 /tmp/password_update.sh
+					chmod 755 /jci/gui/apps/diag/controls/Test/js/TestCtrl.js
+					/tmp/passwd_update.sh
+					log_message "=== ${CMU_SW_VER} detected: SSH activated for the first time! ==="
+				else
+					log_message "=== ${CMU_SW_VER} detected: but SSH is already activated! ==="
+			fi
+		else
+			log_message "=== ${CMU_SW_VER} detected, so SSH must not be activated ==="
+fi
+log_message " "

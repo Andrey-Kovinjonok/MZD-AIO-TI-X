@@ -1,0 +1,11 @@
+# change background image
+if [ "${KEEPBKUPS}"=1 ]
+then
+  cp -a /jci/gui/common/images/background.png "${MYDIR}/bakups/old-background.png"
+  log_message "=== OLD MZD BACKGROUND BACKED UP TO: ${MYDIR}/bakups/old-background.png ==="
+  aio_info "- Backup Saved: old-background.png"
+fi
+show_message "CHANGE BACKGROUND IMAGE ..."
+cp -a ${MYDIR}/config/background.png /jci/gui/common/images
+log_message "=== BACKGROUND IMAGE CHANGED ==="
+log_message " "

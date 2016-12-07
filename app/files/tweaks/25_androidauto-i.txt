@@ -1,0 +1,110 @@
+# Install Android Auto Headunit App
+show_message "INSTALL ANDROID AUTO HEADUNIT APP ..."
+log_message "BEGIN INSTALLATION OF ANDROID AUTO HEADUNIT APP ==="
+
+# set to "yes" if you want to capture input events to allow you to intercept button presses
+# Android Auto is usable without the patch - you can interact with almost anything with the touchscreen interface
+# The install for input_filter is the most risky part of the full install for Android Auto
+button_patch=no
+
+cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_androidauto-before.sh
+cp /jci/opera/opera_dir/userjs/additionalApps.json ${MYDIR}/additionalApps_androidauto-1._before.json
+cp /jci/sm/sm.conf ${MYDIR}/sm_androidauto-before.conf
+
+cp -a ${MYDIR}/config/androidauto/data_persist/dev/* /tmp/mnt/data_persist/dev
+cp -a ${MYDIR}/config/androidauto/tmp/mnt/data/* /tmp/mnt/data/
+cp -a ${MYDIR}/config/androidauto/jci/gui/apps/_androidauto /jci/gui/apps
+cp -a ${MYDIR}/config/androidauto/usr/lib/gstreamer-0.10/libgsth264parse.so /usr/lib/gstreamer-0.10
+chmod 755 /usr/lib/gstreamer-0.10/libgsth264parse.so
+chmod 755 /tmp/mnt/data_persist/dev/bin/websocketd
+chmod 755 /tmp/mnt/data_persist/dev/bin/headunit
+chmod 755 /tmp/mnt/data_persist/dev/bin/headunit-wrapper
+chmod 755 /tmp/mnt/data_persist/dev/bin/input_filter
+
+if [ ! -e /usr/lib/gstreamer-0.10/libgstalsa.so.org ]
+	then
+		cp -a ${MYDIR}/config/androidauto/usr/lib/gstreamer-0.10/libgstalsa.so /usr/lib/gstreamer-0.10/libgstalsa.so.org
+		log_message "=== Backup of /usr/lib/gstreamer-0.10/libgstalsa.so to libgstalsa.so.org ==="
+fi
+cp -a ${MYDIR}/config/androidauto/usr/lib/gstreamer-0.10/libgstalsa.so /usr/lib/gstreamer-0.10
+sleep 2
+chmod 755 /usr/lib/gstreamer-0.10/libgstalsa.so
+
+if [ ${button_patch} = "yes" ]
+	then
+		log_message "=== Install button-patch for AA to /jci/sm/sm.conf ==="
+		if grep -Fq "input_filter" /jci/sm/sm.conf
+			then
+				echo "exist"
+				log_message "=== Modifications for AA already done to /jci/sm/sm.conf ==="
+			else
+				#first backup
+				cp -a /jci/sm/sm.conf /jci/sm/sm.conf.AA
+				log_message "=== Backup of /jci/sm/sm.conf to sm.conf.AA ==="
+				sed -i '/8000/ a\	<service type="process" name="input_filter" path="/tmp/mnt/data_persist/dev/bin/input_filter" autorun="yes" reset_board="no" retry_count="0" affinity_mask="0x02"></service>' /jci/sm/sm.conf
+				sed -i '/svc-com-jci-cpp-devices.so/ a\			<dependency type="service" value="input_filter"/>' /jci/sm/sm.conf
+				log_message "=== Added necessary entrys for AA to /jci/sm/sm.conf ==="
+				cp /jci/sm/sm.conf ${MYDIR}/sm_androidauto-after.conf
+		fi
+	else
+		log_message "=== Installation without button-patch for AA ==="
+fi
+
+log_message "=== Copied Android Auto Headunit App files ==="
+
+# delete empty lines
+sed -i '/^$/ d' /jci/scripts/stage_wifi.sh
+sed -i '/#!/ a' /jci/scripts/stage_wifi.sh
+
+# check for 1st line of stage_wifi.sh
+if grep -Fq "#!/bin/sh" /jci/scripts/stage_wifi.sh
+	then
+		echo "OK"
+		log_message "=== 1st line of stage_wifi.sh is OK ==="
+	else
+		cp -a ${MYDIR}/config/androidauto/stage_wifi.sh /jci/scripts/
+		log_message "=== Missing 1st line of stage_wifi.sh, copied new one ==="
+fi
+
+# add commands for Android Auto to stage_wifi
+if [ -e /jci/scripts/stage_wifi.sh ]
+	then
+		if grep -Fq "# Android Auto start" /jci/scripts/stage_wifi.sh
+			then
+				echo "exist"
+				log_message "=== Android Auto entry already exists in /jci/scripts/stage_wifi.sh ==="
+			else
+				#first backup
+				cp -a /jci/scripts/stage_wifi.sh /jci/scripts/stage_wifi.sh.AA
+				log_message "=== Backup of /jci/scripts/stage_wifi.sh to stage_wifi.sh.AA ==="
+				echo -e "\n\n### Android Auto start" >> /jci/scripts/stage_wifi.sh
+				sleep 1
+				echo -e "websocketd --port=9999 sh &" >> /jci/scripts/stage_wifi.sh
+				log_message "=== Added Android Auto entry to /jci/scripts/stage_wifi.sh ==="
+				cp /jci/scripts/stage_wifi.sh ${MYDIR}/stage_wifi_androidauto-after.sh
+		fi
+fi
+
+# copy additionalApps.js, if not already present
+if [ ! -e /jci/opera/opera_dir/userjs/additionalApps.js ]
+then
+	log_message "=== No additionalApps.js available, will copy one ==="
+	cp -a ${MYDIR}/config/androidauto/jci/opera/opera_dir/userjs/additionalApps.* /jci/opera/opera_dir/userjs/
+	find /jci/opera/opera_dir/userjs/ -type f -name '*.js' -exec chmod 755 {} \;
+fi
+
+# create new additionalApps.json file from scratch if not already present
+if [ ! -e /jci/opera/opera_dir/userjs/additionalApps.json ]
+then
+	log_message "=== No additionalApps.json available, generating one ==="
+	echo "[" > /jci/opera/opera_dir/userjs/additionalApps.json
+	echo "]" >> /jci/opera/opera_dir/userjs/additionalApps.json
+	cp /jci/opera/opera_dir/userjs/additionalApps.json ${MYDIR}/additionalApps_generated.json
+	chmod 755 /jci/opera/opera_dir/userjs/additionalApps.json
+fi
+
+# call function add_app_json to modify additionalApps.json
+add_app_json "_androidauto" "Android Auto"
+
+log_message "END INSTALLATION OF ANDROID AUTO HEADUNIT APP"
+log_message " "

@@ -1,0 +1,9 @@
+JCI_NNG_Tool_CMD [C|S|B] [FILE NAME] [CID (32)]
+C: CID Patching allow you to use cloned SD-Cards
+S: SIGN Patching allow you to use Speedcams
+B: Patch both CID and SIGN
+
+Examples to patch, SIGN, CID or both:
+JCI_NNG_Tool_CMD S jci-linux_imx6_volans-release
+JCI_NNG_Tool_CMD C jci-linux_imx6_volans-release 02544d534530384721c340c63400f80d
+JCI_NNG_Tool_CMD B jci-linux_imx6_volans-release 02544d534530384721c340c63400f80d

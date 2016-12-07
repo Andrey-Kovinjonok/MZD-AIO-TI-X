@@ -1,0 +1,45 @@
+# restore no-more-disclaimer
+show_message "RESTORE DISCLAIMER ..."
+log_message "RESTORE DISCLAIMER ..."
+trackorder_copy=0
+if [ ${CMU_SW_VER} = "58.00.250A-NA" ] || [ ${CMU_SW_VER} = "59.00.326A-ADR" ]
+then
+  trackorder_copy=1
+  trackorder_copy_file=58.00.250A-NA
+  log_message "=== FW ${CMU_SW_VER} detected, copy matching systemApp.js ==="
+fi
+
+if [ -e /jci/gui/apps/system/js/systemApp.js.audio ]
+then
+  if [ ${trackorder_copy} = "1" ]
+  then
+    cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/only_change_audio_order/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+    log_message "=== Restored Disclaimer for ${CMU_SW_VER}, audio order still changed ==="
+  else
+    cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/only_change_audio_order/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+    log_message "=== Restored Disclaimer, audio order still changed ==="
+  fi
+else
+  if test -s /jci/gui/apps/system/js/systemApp.js.org
+  then
+    cp -a /jci/gui/apps/system/js/systemApp.js.org "${MYDIR}/bakups/"
+    cp -a /jci/gui/apps/system/js/systemApp.js.org /jci/gui/apps/system/js/systemApp.js
+    log_message "=== Restored systemApp.js from backup ==="
+  else
+    if [ ${trackorder_copy} = "1" ]
+    then
+      log_message "=== No more systemApp.js.org available ==="
+      cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/nothing/jci/gui/apps/system/js/systemApp.${trackorder_copy_file}.js /jci/gui/apps/system/js/systemApp.js
+      log_message "=== Restored Disclaimer for ${CMU_SW_VER} ==="
+    else
+      log_message "=== No more systemApp.js.org available ==="
+      cp -a ${MYDIR}/config_org/audio_order_AND_no_More_Disclaimer/nothing/jci/gui/apps/system/js/systemApp.js /jci/gui/apps/system/js/
+      log_message "=== Restored Disclaimer ==="
+    fi
+  fi
+fi
+
+rm -f /jci/gui/apps/system/js/systemApp.js.disclaimer
+log_message "=== Removed /jci/gui/apps/system/js/systemApp.js.disclaimer ==="
+log_message "END RESTORING DISCLAIMER"
+log_message " "

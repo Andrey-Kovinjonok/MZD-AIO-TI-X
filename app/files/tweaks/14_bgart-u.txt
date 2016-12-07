@@ -1,0 +1,16 @@
+# restore bigger album art
+show_message "RESTORE BIGGER ALBUM ART ..."
+log_message "RESTORE BIGGER ALBUM ART ..."
+if test -s /jci/gui/common/controls/NowPlaying4/css/NowPlaying4Ctrl.css.org
+	then
+		rm -f /jci/gui/common/controls/NowPlaying4/css/NowPlaying4Ctrl.css
+		mv /jci/gui/common/controls/NowPlaying4/css/NowPlaying4Ctrl.css.org /jci/gui/common/controls/NowPlaying4/css/NowPlaying4Ctrl.css
+		log_message "=== Restored NowPlaying4Ctrl.css from backup ==="
+	else
+		cp -a ${MYDIR}/config_org/bigger-album-art/jci/gui/common/controls/NowPlaying4/css/NowPlaying4Ctrl.css /jci/gui/common/controls/NowPlaying4/css/
+		log_message "=== No NowPlaying4Ctrl.css.org found, copied from SD card ==="
+fi
+cp -a ${MYDIR}/config_org/bigger-album-art/jci/gui/common/controls/InCall2/images/NowPlayingImageFrame.png /jci/gui/common/controls/InCall2/images/
+cp -a ${MYDIR}/config_org/bigger-album-art/jci/gui/common/controls/NowPlaying4/images/NowPlayingImageFrame.png /jci/gui/common/controls/NowPlaying4/images/
+log_message "END RESTORE BIGGER ALBUM ART"
+log_message " "

@@ -1,2 +1,14 @@
 node_modules
-/dist
+.idea
+*.log
+/out
+/tmp
+_copy_to_usb
+operation_log.txt
+/releases/win
+*_LOG.*
+app.asar
+win-unpacked
+/resources
+*.tgz
+ssl

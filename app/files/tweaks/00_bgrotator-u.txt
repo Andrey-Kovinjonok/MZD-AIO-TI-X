@@ -1,0 +1,22 @@
+# restore background image and common.css to original
+show_message "UNINSTALL BACKGROUND ROTATOR ..."
+log_message "UNINSTALL BACKGROUND ROTATOR ..."
+if test -s /jci/gui/common/css/common.css.org
+	then
+    if [ "${KEEPBKUPS}" = 1 ]
+    then
+      aio_info "- Backup Saved: common.css.org"
+      cp /jci/gui/common/css/common.css.org "${MYDIR}/bakups/"
+    fi
+    # keep backups
+		# rm -f /jci/gui/common/css/common.css
+		cp /jci/gui/common/css/common.css.org /jci/gui/common/css/common.css
+		log_message "=== Restored /jci/gui/common/css/common.css from backup ==="
+	else
+		cp -a ${MYDIR}/config_org/BackgroundRotator/jci/gui/common/css/common.css /jci/gui/common/css
+		log_message "=== No backup. Restored /jci/gui/common/css/common.css from SD card ==="
+fi
+log_message "RESTORED BACKGROUND IMAGE & COMMON.CSS"
+log_message " "
+# Dont need this because the background tweak will always run after and take care of it
+# cp -a ${MYDIR}/config/background.png /jci/gui/common/images/

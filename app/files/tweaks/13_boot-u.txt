@@ -1,0 +1,23 @@
+# restore boot animation
+show_message "RESTORE BOOT ANIMATION ..."
+log_message "RESTORE BOOT ANIMATION ..."
+if test -s /jci/resources/TranLogo.ivf.org
+	then
+		rm -f /jci/resources/TranLogo.ivf
+		mv /jci/resources/TranLogo.ivf.org /jci/resources/TranLogo.ivf
+		log_message "=== Restored original /jci/resources/TranLogo.ivf ==="
+	else
+		cp -a ${MYDIR}/config_org/bootanimation/jci/resources/TranLogo.ivf /jci/resources/
+		log_message "=== No TranLogo.ivf.org available, copied from USB drive ==="
+fi
+if test -s /jci/resources/TranLogoEnd.ivf.org
+	then
+		rm -f /jci/resources/TranLogoEnd.ivf
+		mv /jci/resources/TranLogoEnd.ivf.org /jci/resources/TranLogoEnd.ivf
+		log_message "=== Restored original /jci/resources/TranLogoEnd.ivf ==="
+	else
+		cp -a ${MYDIR}/config_org/bootanimation/jci/resources/TranLogoEnd.ivf /jci/resources/
+		log_message "=== No TranLogoEnd.ivf.org available, copied from USB drive ==="
+fi
+log_message "END RESTORING BOOT ANIMATION TO ORIGINAL"
+log_message " "

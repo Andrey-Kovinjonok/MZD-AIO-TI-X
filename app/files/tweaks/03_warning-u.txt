@@ -1,0 +1,5 @@
+# restore safety warning from reverse camera
+show_message "RESTORE SAFETY WARNING FROM REVERSE CAMERA ..."
+cp -a ${MYDIR}/config_org/safety-warning-reverse-camera/jci/nativegui/images/*.png /jci/nativegui/images/
+log_message "=== RESTORED SAFETY WARNING FROM REVERSE CAMERA ==="
+log_message " "
