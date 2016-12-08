@@ -11,8 +11,8 @@
 |**                                                                          **|
 |** ************************************************************************ **|
 \* ************************************************************************** */
-var approot = './app/'// for dev
-//var approot = app.getAppPath()// for dist
+// var approot = './app/'// for dev
+var approot = app.getAppPath()// for dist
 var builddir = `${approot}/files/tweaks/` // Location of tweak files (as .txt files)
 var extradir = app.getPath('userData') // Location of downloaded tweak files (userData)
 var logFileName = 'MZD_LOG' // Name of log file (without extension)
@@ -28,7 +28,7 @@ var fileCount = 0
 var opsComplete = false
 var filesComplete = true
 // First line of AIO log
-var AIO_LOG = `# __MZD-AIO-TI__ | MZD All In One Tweaks Installer\n#### AIO COMPILATION LOG - ${Date()}=\n\n___\n\n- *START!*\n`
+var AIO_LOG = `# __MZD-AIO-TI__ | MZD All In One Tweaks Installer\n#### AIO COMPILATION LOG - ${Date()}=\n\n___\n\n- *START!*`
 var AIO_LOG_HTML = `<h1><b>MZD-AIO-TI</b> | MZD All In One Tweaks Installer</h1><br><h4> AIO COMPILATION LOG - ${Date()}</h4><hr><div><ul><li><b><i>START!</i></b></li>`
 // flag to prevent disclaimer&audiosource folder from being copied twice
 var disclaimerAndAudioFlag = false
@@ -41,7 +41,7 @@ var tmpdir
 function buildTweakFile (user) {
   tmpdir = path.normalize(path.join(persistantData.get('copyFolderLocation'), '/_copy_to_usb')) // Place to hold USB drive files before copying
   AIO_LOG += `_copy_to_usb Location: ${tmpdir}`
-  AIO_LOG_HTML += `<li><b>_copy_to_usb Location: ${tmpdir}</b></li>`
+  AIO_LOG += `<li><b>_copy_to_usb Location: ${tmpdir}</b></li>`
   bootbox.dialog({
     message: `<div style='text-align:center;' data-hint='If copying to a USB drive is taking a very long time, try picking less tweaks at once. The Color Scheme and Swapfile tweaks take the longest to copy bacause of their size, copying may take up to 30 minutes if both are chosen.' data-hintPosition='top-middle' data-position='auto'>Compiling... Please Wait <br><div id='userLogView' style='text-align:center;' ></div><br><img class='loader' src='./files/load-1.gif' alt='...' /></div><div id='copy-loc'>Location of _copy_to_usb Folder: ${tmpdir}</div>`,
     closeButton: false
@@ -633,15 +633,12 @@ function printAIOlog () {
   }
 }
 function unzipSwapfile (dest, callback) {
-  if (`${dest}` === `copy`) {
-    dest = null
-  }
   if (copySwapfile) {
     copySwapfile = false
-    if (!dest) {
+    console.log('Unzipping Swapfile')
+    if (!dest || `${dest}` === `copy`) {
       dest = `${tmpdir}`
     }
-    console.log('Unzipping Swapfile')
     var swapMsg = bootbox.dialog({
       message: `<div class='w3-center'><h3>Unzipping Swapfile To: ${dest}...  Please Wait... </h3><br><div id='swapLogView' style='text-align:center;' ></div><br><img class='loader' src='./files/load-0.gif' alt='...' /></div>`,
       closeButton: false
@@ -677,11 +674,7 @@ function unzipSwapfile (dest, callback) {
       }
     })
   } else {
-    if (!dest) {
-      noUsbDrive()
-    } else {
-      finishedMessage(dest)
-    }
+    finishedMessage(dest)
   }
 }
 // Returns the available usb drives
@@ -772,7 +765,7 @@ function noUsbDrive () {
   bootbox.hideAll()
   bootbox.alert({
     title: `<h2>Compilation Finished!</h2>`,
-    message: `No available USB drives found. Copy the entire contents of ${tmpdir} onto a blank, FAT32 formatted usb flash drive. <br><button href='' class='w3-round w3-black w3-btn w3-ripple nousbbutton' title='Copy These Files To A Blank USB Drive' onclick='openCopyFolder()'>Open '_copy_to_usb' Folder</button>`,
+    message: `No available USB drives found. Copy the entire contents of ${tmpdir} onto a blank, FAT32 formatted usb flash drive. <button href='' class='w3-round w3-black w3-btn w3-ripple nousbbutton' title='Copy These Files To A Blank USB Drive' onclick='openCopyFolder()'>Open '_copy_to_usb' Folder</button>`,
     callback: function () { finishedMessage() }
   })
 }
@@ -800,10 +793,10 @@ function copyToUSB (mp) {
 function usbCopyComplete () {
 
 }
-var strtOver = '<button class="w3-round-xlarge w3-btn w3-ripple w3-large w3-hover-white .w3-border-black" onclick="location.reload()"><span class="icon-space-shuttle"></span>   Start Over</button>'
-var viewLog = `<button class="w3-round-xlarge w3-indigo w3-btn w3-ripple w3-hover-cyan w3-large .w3-border-black" title='Compile Log' onclick="$('#opn-mzd-log').click()"><span class='icon-star-full'></span>   View AIO Compile Log</button>`
+var strtOver = '<button class="w3-round-xlarge w3-btn w3-ripple w3-large w3-hover-white .w3-border-black" onclick="location.reload()"><span class="icon-space-shuttle"></span> Start Over</button>'
+var viewLog = `<button class="w3-round-xlarge w3-indigo w3-btn w3-ripple w3-hover-cyan w3-large .w3-border-black" title='Compile Log' onclick="$('#opn-mzd-log').click()"><span class='icon-star-full'></span> View AIO Compile Log</button>`
 var cp2usb = '<button class="w3-round-xlarge w3-teal w3-btn w3-ripple w3-hover-pink w3-large .w3-border-black" title="Copy These Files To A Blank USB Drive" onclick="openCopyFolder()"><span class="icon-copy2"></span> Open \'_copy_to_usb\' Folder</button>'
-var closeApp = '<button class="w3-round-xlarge w3-red w3-btn w3-ripple w3-hover-lime w3-large .w3-border-black" title="Close The App" onclick="window.close()"><span class="icon-exit"></span>    Exit</button>'
+var closeApp = '<button class="w3-round-xlarge w3-red w3-btn w3-ripple w3-hover-lime w3-large .w3-border-black" title="Close The App" onclick="window.close()"><span class="icon-exit"></span> Exit</button>'
 var openUSB = ''
 function finishedMessage (mp) {
   // Finished message
